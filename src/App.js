@@ -1,3 +1,6 @@
+// 05 eslint 문법체크 안보이게 하려면... 추가
+/*eslint-disable */
+
 // 04 useState : 리액트 내장함수 state 쓰겠다는 뜻
 import React, { useState } from "react";
 
@@ -75,44 +78,121 @@ import "./App.css";
 
 //(2) useState('남자코트');
 // useState 를 es6 destructuring문법으로 바꿈
-// state데이터변경함수는 나중에 
+// state데이터변경함수는 나중에
 
 // (3) array 사용가능( "문자,숫자,array,object 사용가능")
 // 1번째 데이터
 
+// function App() {
+//   // (1)
+//   var [a, b] = [10, 100];
+
+//   // (2)
+//   let [문자, 문자변경함수] = useState("남자코트");
+
+//   //(3)
+//   let [문자2, 문자변경함수2] = useState(["맛집1", "맛집2"]);
+
+//   let posts = "변수";
+
+//   return (
+//     <div className="App">
+//       <div className="black-nav">
+//         <div>개발 blog</div>
+//       </div>
+
+//       <div className="list">
+//         <h3>{posts}</h3>
+//         <p>2월 17일 발행</p>
+//         <hr />
+//       </div>
+//       <div className="list">
+//         <h3>{문자}</h3>
+//         <p>2월 17일 발행</p>
+//         <hr />
+//       </div>
+//       <div className="list">
+//       // (3)
+//         <h3>{문자2[1]}</h3>
+//         <p>2월 17일 발행</p>
+//         <hr />
+//       </div>
+//     </div>
+//   );
+// }
+
+// 05  (좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
+
+// (1) span 클릭할때마다 숫자 오르기
+// ( JS문법  onclick = "1+1" )
+// react문법  onClick = { ()=>{1+1} }
+//  { } , 함수를 사용해야함.
+
+// (2) (3) count : 문자. setCount : count 변경하는 함수
+
+// setCount(); 함수를 가져다 쓸수있음
+// setCount(1);      ---> count(0)이 1로 바뀜
+// setCount(가나다);---> count(0)이 '가나다'로 바뀜
+
+// 그냥쓰면 재랜더링이 무한반복됨
+
 function App() {
-  // (1)
-  var [a, b] = [10, 100];
-
   // (2)
-  let [문자, 데이터변경함수] = useState("남자코트");
+  let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
+  // let [count, setCount] = useState(0);
 
-  //(3)
-  let [문자2, 데이터변경함수2] = useState(["맛집1", "맛집2"]);
+  let [따봉, 따봉변경] = useState(0);
 
-  let posts = "변수";
+  // (3)
+  let [count, setCount] = useState(0);
+
+  let posts = "강남 고기 맛집";
 
   return (
     <div className="App">
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
-
       <div className="list">
-        <h3>{posts}</h3>
+        // (1)
+        <h3>
+          {문자[0]}{" "}
+          <button
+            onClick={() => {
+              console.log(1);
+            }}
+          >
+            👍
+          </button>
+          0{" "}
+        </h3>
+        // (2)
+        <h3>
+          {" "}
+          {문자[0]}{" "}
+          <button
+            onClick={() => {
+              따봉변경(따봉 + 1);
+            }}
+          >
+            👍
+          </button>{" "}
+          {따봉}
+        </h3>
+        // (3)
+        <div>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
         <p>2월 17일 발행</p>
-        <hr />
       </div>
       <div className="list">
-        <h3>{문자}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
+        <h3>{문자[1]}</h3>
+        <p>2월 18일 발행</p>
       </div>
       <div className="list">
-      // (3)
-        <h3>{문자2[1]}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
+        <h3>{문자[2]}</h3>
+        <p>2월 19일 발행</p>
       </div>
     </div>
   );
