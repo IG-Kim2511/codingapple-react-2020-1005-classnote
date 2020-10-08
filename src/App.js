@@ -1,4 +1,6 @@
+// 04 useState : 리액트 내장함수 state 쓰겠다는 뜻
 import React, { useState } from "react";
+
 // 03-(3) 이미지 넣기 : 다른폴더에서 import해온 후, 이름지어주고, 그이름을 { }에 넣어서 사용
 import logo from "./logo.svg";
 
@@ -17,13 +19,13 @@ import "./App.css";
 // (3) 이미지 넣기
 // (4) 클래스 이름으로도 사용가능
 
-// (5) style 넣기 : 오브젝트 형식 { ' ' },과 데이터바인딩 { } 사용. style={{color:'blue'}}
+// (5-1) style 넣기 :  그냥 css에 따로 코딩하는게 간편함
+
+// (5-2) 오브젝트 형식 { ' ' },과 데이터바인딩 { } 사용. style={{color:'blue'}}
 // , '' 넣는것 조심
 // font-size --> fontSize (js문법과 겹침)
 
-// (6)style을 따로 변수에 넣고 데이터바인딩{ }사용..가능함
-
-// (7) 그냥 css에 따로 코딩하는게 간편함
+// (5-3)style을 따로 변수에 넣고 데이터바인딩{ }사용..가능함
 
 // function App() {
 // // (1)
@@ -34,7 +36,7 @@ import "./App.css";
 //   return 100
 // }
 
-//  // (6)
+//  // (5-3)
 // var posts2 = { color: "blue", fontSize: "30px" };
 
 //   return (
@@ -55,32 +57,41 @@ import "./App.css";
 //         <div className={data}>개발 blog</div>
 //       </div>
 
-// // (5)
+// // (5-2)
 // <div style={{ color: "blue", fontSize: "30px" }}>개발 blog </div>
 
-// // (6)
-// <div style={ post2}>개발 blog </div>
+// // (5-3)
+// <div style={ post2 }>개발 blog </div>
 
 //     </div>
 //   );
 // }
 
-// 04 중요한 데이터는 변수말고 state로 만들랬죠
+// 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
+// 데이터는 variable(변수) or state에 넣을수있음
+
+// (1)ES6 destructuring 문법 : array,object 를 variable함
+// a=10, b=100
+
+//(2) useState('남자코트');
+// useState 를 es6 destructuring문법으로 바꿈
+// state데이터변경함수는 나중에 
+
+// (3) array 사용가능( "문자,숫자,array,object 사용가능")
+// 1번째 데이터
 
 function App() {
-  // ES6 destructuring 문법
+  // (1)
   var [a, b] = [10, 100];
 
-  // useState
-  let [데이터, 데이터변경함수] = useState("문자 데이터");
+  // (2)
+  let [문자, 데이터변경함수] = useState("남자코트");
 
-  // [array]
-  let [데이터2, 데이터변경함수2] = useState([
-    "문자,숫자,array,object 사용가능",
-    "array 사용 가능2",
-  ]);
+  //(3)
+  let [문자2, 데이터변경함수2] = useState(["맛집1", "맛집2"]);
 
   let posts = "변수";
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -93,12 +104,13 @@ function App() {
         <hr />
       </div>
       <div className="list">
-        <h3>{데이터}</h3>
+        <h3>{문자}</h3>
         <p>2월 17일 발행</p>
         <hr />
       </div>
       <div className="list">
-        <h3>{데이터2[0]}</h3>
+      // (3)
+        <h3>{문자2[1]}</h3>
         <p>2월 17일 발행</p>
         <hr />
       </div>
