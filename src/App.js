@@ -128,58 +128,100 @@ import "./App.css";
 // react문법  onClick = { ()=>{1+1} }
 //  { } , 함수를 사용해야함.
 
-// (2) (3) count : 문자. setCount : count 변경하는 함수
+// (2) (3) state : 문자. state function : 문자 변경하는 함수
 
-// setCount(); 함수를 가져다 쓸수있음
-// setCount(1);      ---> count(0)이 1로 바뀜
-// setCount(가나다);---> count(0)이 '가나다'로 바뀜
+// state함수(); 함수를 가져다 쓸수있음
+// state함수(1);      ---> count(0)이 1로 바뀜
+// state함수(가나다);---> count(0)이 '가나다'로 바뀜
 
 // 그냥쓰면 재랜더링이 무한반복됨
 
+// function App() {
+//   let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
+
+//   // (2)
+//   let [state, state함수] = useState(0);
+
+//   // (3)
+//   let [count, setCount] = useState(0);
+
+//   let posts = "강남 고기 맛집";
+
+//   return (
+//     <div className="App">
+//       <div className="black-nav">
+//         <div>개발 blog</div>
+//       </div>
+//       <div className="list">
+//         // (1)
+//         <h3>
+//           {문자[0]}{" "}
+//           <button
+//             onClick={() => {
+//               console.log(1);
+//             }}
+//           >
+//             👍
+//           </button>
+//           0{" "}
+//         </h3>
+//         // (2)
+//         <h3>
+//           {" "}
+//           {문자[0]}{" "}
+//           <button
+//             onClick={() => {
+//               state함수(state + 1);
+//             }}
+//           >
+//             👍
+//           </button>{" "}
+//           {state}
+//         </h3>
+//         // (3)
+//         <div>
+//           <p>You clicked {count} times</p>
+//           <button onClick={() => setCount(count + 1)}>Click me</button>
+//         </div>
+//         <p>2월 17일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{문자[1]}</h3>
+//         <p>2월 18일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{문자[2]}</h3>
+//         <p>2월 19일 발행</p>
+//       </div>
+//     </div>
+//   );
+// }
+
+// 06 숙제 해설 : 블로그 글 수정버튼 만들기
+// (1)함수에 ()붙이면, 클릭이전에 바로 함수실행됨. 그래서 뺌
+
 function App() {
-  // (2)
-  let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
-  // let [count, setCount] = useState(0);
+  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
-  let [따봉, 따봉변경] = useState(0);
+  let [state, state함수] = useState(0);
 
-  // (3)
   let [count, setCount] = useState(0);
 
   let posts = "강남 고기 맛집";
+
+  // (1)
+  function 제목바꾸기() {
+    글제목변경(["여자", "강남", "파이썬"]);
+  }
 
   return (
     <div className="App">
       <div className="black-nav">
         <div>개발 blog</div>
       </div>
+      // (1)
+      <button onClick={제목바꾸기}>버튼</button>
       <div className="list">
-        // (1)
-        <h3>
-          {문자[0]}{" "}
-          <button
-            onClick={() => {
-              console.log(1);
-            }}
-          >
-            👍
-          </button>
-          0{" "}
-        </h3>
-        // (2)
-        <h3>
-          {" "}
-          {문자[0]}{" "}
-          <button
-            onClick={() => {
-              따봉변경(따봉 + 1);
-            }}
-          >
-            👍
-          </button>{" "}
-          {따봉}
-        </h3>
-        // (3)
         <div>
           <p>You clicked {count} times</p>
           <button onClick={() => setCount(count + 1)}>Click me</button>
@@ -187,15 +229,63 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h3>{문자[1]}</h3>
+        <h3>{글제목[0]}</h3>
         <p>2월 18일 발행</p>
       </div>
       <div className="list">
-        <h3>{문자[2]}</h3>
+        <h3>{글제목[1]}</h3>
         <p>2월 19일 발행</p>
       </div>
     </div>
   );
 }
+
+// function App() {
+//   let [state2, state함수2] = useState(["남자코트", "강남", "파이썬"]);
+
+//   let [state, state함수] = useState(0);
+
+//   let posts = "강남 고기 맛집";
+
+//   // (1)
+//   function 제목바꾸기() {
+//     state함수2(["여자코트", "강남", "파이썬"]);
+//   }
+
+//   //  (2)
+
+//   // function 제목바꾸기() {
+//   //   var newArray = [...state2];
+//   //   newArray[0] = "여자코트 추천";
+//   //   글제목변경(newArray);
+//   // }
+
+//   return (
+//     <div className="App">
+//       <div className="black-nav">
+//         <div>개발 blog</div>
+//       </div>
+
+//       // (1)
+//       <button onClick={제목바꾸기}>button</button>
+
+//       <div className="list">
+//         <div>
+//           <p>You clicked {state} times</p>
+//           <button onClick={() => state함수(state + 1)}>Click me</button>
+//         </div>
+//         <p>2월 17일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{state2[0]}</h3>
+//         <p>2월 18일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{state2[1]}</h3>
+//         <p>2월 19일 발행</p>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default App;
