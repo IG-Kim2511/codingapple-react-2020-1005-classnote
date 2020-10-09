@@ -31,7 +31,7 @@ import "./App.css";
 
 // (5-3)style을 따로 변수에 넣고 데이터바인딩{ }사용..가능함
 
-// function App() {
+// function App3() {
 // // (1)
 //   var posts = "강남 고기 맛집";
 
@@ -52,7 +52,7 @@ import "./App.css";
 // // (2)
 // <h4>{ 함수() }</h4>
 // // (3)
-// <img src={logo}>
+// <img src={logo}></img>
 //       </div>
 
 //       <div className="black-nav">
@@ -71,6 +71,8 @@ import "./App.css";
 //   );
 // }
 
+
+
 // 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
 // 데이터는 variable(변수) or state에 넣을수있음
 
@@ -85,43 +87,47 @@ import "./App.css";
 // (3) array 사용가능( "문자,숫자,array,object 사용가능")
 // 1번째 데이터
 
-// function App() {
-//   // (1)
-//   var [a, b] = [10, 100];
+function App4() {
+  // (1)
+  var [a, b] = [10, 100];
 
-//   // (2)
-//   let [문자, 문자변경함수] = useState("남자코트");
+  // (2)
+  let [문자, 문자변경함수] = useState("남자코트");
 
-//   //(3)
-//   let [문자2, 문자변경함수2] = useState(["맛집1", "맛집2"]);
+  //(3)
+  let [문자2, 문자변경함수2] = useState(["맛집1", "맛집2"]);
 
-//   let posts = "변수";
+  let posts = "변수";
 
-//   return (
-//     <div className="App">
-//       <div className="black-nav">
-//         <div>개발 blog</div>
-//       </div>
+  return (
+    <div className="App">
+      <div className="black-nav">
+        <div>  App4() 개발 blog</div>
+      </div>
 
-//       <div className="list">
-//         <h3>{posts}</h3>
-//         <p>2월 17일 발행</p>
-//         <hr />
-//       </div>
-//       <div className="list">
-//         <h3>{문자}</h3>
-//         <p>2월 17일 발행</p>
-//         <hr />
-//       </div>
-//       <div className="list">
-//       // (3)
-//         <h3>{문자2[1]}</h3>
-//         <p>2월 17일 발행</p>
-//         <hr />
-//       </div>
-//     </div>
-//   );
-// }
+      <div className="list">
+        <h3>{posts}</h3>
+        <p>2월 17일 발행</p>
+        <hr />
+      </div>
+      <div className="list">
+        <h3>{문자}</h3>
+        <p>2월 17일 발행</p>
+        <hr />
+      </div>
+      <div className="list">
+      // (3)
+        <h3>{문자2[1]}</h3>
+        <p>2월 17일 발행</p>
+        <hr />
+      </div>
+    </div>
+  );
+}
+
+
+
+
 
 // 05  (좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
 
@@ -138,68 +144,70 @@ import "./App.css";
 
 // 그냥쓰면 재랜더링이 무한반복됨
 
-// function App() {
-//   let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
+function App5() {
+  let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
 
-//   // (2)
-//   let [state, state함수] = useState(0);
+  // (2)
+  let [state, state함수] = useState(0);
 
-//   // (3)
-//   let [count, setCount] = useState(0);
+  // (3)
+  let [count, setCount] = useState(0);
 
-//   let posts = "강남 고기 맛집";
+  let posts = "강남 고기 맛집";
 
-//   return (
-//     <div className="App">
-//       <div className="black-nav">
-//         <div>개발 blog</div>
-//       </div>
-//       <div className="list">
-//         // (1)
-//         <h3>
-//           {문자[0]}{" "}
-//           <button
-//             onClick={() => {
-//               console.log(1);
-//             }}
-//           >
-//             👍
-//           </button>
-//           0{" "}
-//         </h3>
-//         // (2)
-//         <h3>
-//           {" "}
-//           {문자[0]}{" "}
-//           <button
-//             onClick={() => {
-//               state함수(state + 1);
-//             }}
-//           >
-//             👍
-//           </button>{" "}
-//           {state}
-//         </h3>
+  return (
+    <div className="App">
+      <div className="black-nav">
+        <div> App5() 개발 blog</div>
+      </div>
+      <div className="list">
+        // (1)
+        <h3>
+          {문자[0]}{" "}
+          <button
+            onClick={() => {
+              console.log(1);
+            }}
+          >
+            👍
+          </button>
+          0{" "}
+        </h3>
+        // (2)
+        <h3>
+          {" "}
+          {문자[0]}{" "}
+          <button
+            onClick={() => {
+              state함수(state + 1);
+            }}
+          >
+            👍
+          </button>{" "}
+          {state}
+        </h3>
 
-// <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
-//         // (3)
-//         <div>
-//           <p>You clicked {count} times</p>
-//           <button onClick={() => setCount(count + 1)}>Click me</button>
-//         </div>
-//         <p>2월 17일 발행</p>
-//       </div>
-//       <div className="list">
-//         <h3>{문자[1]}</h3>
-//         <p>2월 18일 발행</p>
-//       </div>
-//       <div className="list">
-//         <h3>{문자[2]}</h3>
-//         <p>2월 19일 발행</p>
-//       </div>
-//     </div>
-//   );
-// }
+<h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+        // (3)
+        <div>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
+        <p>2월 17일 발행</p>
+      </div>
+      <div className="list">
+        <h3>{문자[1]}</h3>
+        <p>2월 18일 발행</p>
+      </div>
+      <div className="list">
+        <h3>{문자[2]}</h3>
+        <p>2월 19일 발행</p>
+      </div>
+    </div>
+  );
+}
+
+
 
 // 06 숙제 해설 : 블로그 글 수정버튼 만들기
 // (1)onClick에 함수넣기
@@ -224,54 +232,54 @@ import "./App.css";
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // 방법은 var newArray = [...글제목];
 
-// function App6() {
-//   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+function App6() {
+  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
-//   let [state, state함수] = useState(0);
+  let [state, state함수] = useState(0);
 
-//   let [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
 
-//   let posts = "강남 고기 맛집";
+  let posts = "강남 고기 맛집";
 
-//   // (1)
-//   // function 제목바꾸기() {
-//   //   글제목변경(["여자", "강남", "파이썬"]);
-//   // }
+  // (1)
+  // function 제목바꾸기() {
+  //   글제목변경(["여자", "강남", "파이썬"]);
+  // }
 
-//   // (2)
-//   function 제목바꾸기() {
-//     var newArray = [...글제목];
-//     newArray[0] = "여자코트 추천";
-//     글제목변경(newArray);
-//   }
+  // (2)
+  function 제목바꾸기() {
+    var newArray = [...글제목];
+    newArray[0] = "여자코트 추천";
+    글제목변경(newArray);
+  }
 
-//   return (
-//     <div className="App">
-//       <div className="black-nav">
-//         <div>개발 blog</div>
-//       </div>
-//       // (1) (2)
-//       <button onClick={제목바꾸기}>버튼</button>
-//       <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
-//       <div className="list">
-//         <div>
-//           <p>You clicked {count} times</p>
-//           <button onClick={() => setCount(count + 1)}>Click me</button>
-//         </div>
-//         <p>2월 17일 발행</p>
-//       </div>
-//       <div className="list">
-//         <h3>{글제목[0]}</h3>
-//         <p>2월 18일 발행</p>
-//       </div>
-//       <div className="list">
-//         <h3>{글제목[1]}</h3>
-//         <p>2월 19일 발행</p>      
-//       </div>
+  return (
+    <div className="App">
+      <div className="black-nav">
+        <div> App6()개발 blog</div>
+      </div>
+      // (1) (2)
+      <button onClick={제목바꾸기}>버튼</button>
+      <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+      <div className="list">
+        <div>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
+        <p>2월 17일 발행</p>
+      </div>
+      <div className="list">
+        <h3>{글제목[0]}</h3>
+        <p>2월 18일 발행</p>
+      </div>
+      <div className="list">
+        <h3>{글제목[1]}</h3>
+        <p>2월 19일 발행</p>      
+      </div>
    
-//     </div>
-//   );
-// }
+    </div>
+  );
+}
 
 // 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
 // (1) function App() {},  function Modal(){} 각자 Component
@@ -281,11 +289,12 @@ import "./App.css";
 // (4)  <>: fragments문법
 // (5) 다른component의 변수를 가져와 쓸수없음. props라는 문법을 이용해 state를 <Modal>까지 전해줘야 비로소 사용가능합니다.
 
-function App() {
+
+
+function App7() {
   return (
     <div className="App">
-    
-
+    <div> App7</div>
     <Modal></Modal>
     <Modal/>
    
@@ -306,6 +315,17 @@ function Modal(){
       </div>
       <div></div>
       </>
+  )
+}
+
+function App(){
+  return(
+    <>
+    <App4/>
+    <App5/>
+    <App6/>
+    <App7/>
+    </>
   )
 }
 
