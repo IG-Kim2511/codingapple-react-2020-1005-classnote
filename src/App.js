@@ -224,7 +224,7 @@ import "./App.css";
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // 방법은 var newArray = [...글제목];
 
-// function App() {
+// function App6() {
 //   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
 //   let [state, state함수] = useState(0);
