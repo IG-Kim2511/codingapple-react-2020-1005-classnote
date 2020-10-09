@@ -78,6 +78,7 @@ import "./App.css";
 
 //(2) useState('남자코트');
 // useState 를 es6 destructuring문법으로 바꿈
+// let [state, state함수] = useState(0);
 // state데이터변경함수는 나중에
 
 // (3) array 사용가능( "문자,숫자,array,object 사용가능")
@@ -178,6 +179,8 @@ import "./App.css";
 //           </button>{" "}
 //           {state}
 //         </h3>
+
+// <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
 //         // (3)
 //         <div>
 //           <p>You clicked {count} times</p>
@@ -248,6 +251,7 @@ function App() {
       </div>
       // (1) (2)
       <button onClick={제목바꾸기}>버튼</button>
+      <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
       <div className="list">
         <div>
           <p>You clicked {count} times</p>
@@ -261,8 +265,9 @@ function App() {
       </div>
       <div className="list">
         <h3>{글제목[1]}</h3>
-        <p>2월 19일 발행</p>
+        <p>2월 19일 발행</p>      
       </div>
+   
     </div>
   );
 }
