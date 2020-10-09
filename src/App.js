@@ -101,10 +101,8 @@ function App4() {
 
   return (
     <div className="App">
-      <div className="black-nav">
-        <div>  App4() 개발 blog</div>
-      </div>
-
+    <div className="black-nav">04 state: 중요한 데이터는 변수말고 state로 만들랬죠</div>
+ 
       <div className="list">
         <h3>{posts}</h3>
         <p>2월 17일 발행</p>
@@ -129,7 +127,7 @@ function App4() {
 
 
 
-// 05  (좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
+// 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
 
 // (1) span 클릭할때마다 숫자 오르기
 // ( JS문법  onclick = "1+1" )
@@ -157,9 +155,7 @@ function App5() {
 
   return (
     <div className="App">
-      <div className="black-nav">
-        <div> App5() 개발 blog</div>
-      </div>
+    <div className="black-nav">05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법</div>
       <div className="list">
         // (1)
         <h3>
@@ -255,10 +251,8 @@ function App6() {
 
   return (
     <div className="App">
-      <div className="black-nav">
-        <div> App6()개발 blog</div>
-      </div>
-      // (1) (2)
+    <div className="black-nav"> 06 숙제 해설 : 블로그 글 수정버튼 만들기</div>
+         // (1) (2)
       <button onClick={제목바꾸기}>버튼</button>
       <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
       <div className="list">
@@ -289,12 +283,10 @@ function App6() {
 // (4)  <>: fragments문법
 // (5) 다른component의 변수를 가져와 쓸수없음. props라는 문법을 이용해 state를 <Modal>까지 전해줘야 비로소 사용가능합니다.
 
-
-
 function App7() {
   return (
     <div className="App">
-    <div> App7</div>
+    <div className="black-nav">07 Component : </div>
     <Modal></Modal>
     <Modal/>
    
@@ -302,15 +294,16 @@ function App7() {
   );
 }
 
+
 // (1) (3)
 function Modal(){
   return(
     //(4)
     <>
     <div className='modal'>
-      <h2>제목</h2>
-      <p>날짜</p>
-      <p>상세내용</p>
+      <h2>title</h2>
+      <p>date</p>
+      <p>date</p>
       
       </div>
       <div></div>
@@ -318,6 +311,8 @@ function Modal(){
   )
 }
 
+
+// App
 function App(){
   return(
     <>
@@ -325,9 +320,11 @@ function App(){
     <App5/>
     <App6/>
     <App7/>
+    
     </>
   )
 }
+
 
 export default App;
 
