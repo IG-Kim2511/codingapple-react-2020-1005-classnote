@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* 03 JSX를 이용해 HTML 페이지 제작 */
@@ -24,6 +24,13 @@
   text-align : left;
   padding-left : 20px;
   padding-right : 20px;
+}
+
+/* 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때 */
+.modal{
+  margin-top: 20px;
+  padding: 20px;
+  background: grey;
 }
 
 @media (prefers-reduced-motion: no-preference) {

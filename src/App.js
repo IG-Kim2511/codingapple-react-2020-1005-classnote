@@ -9,6 +9,7 @@ import logo from "./logo.svg";
 
 import "./App.css";
 
+// 01 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
 // 02 2 리액트 React 설치
 // 설치: npx create-react-app 폴더이름
 // 미리보기:  npm start
@@ -223,53 +224,90 @@ import "./App.css";
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // 방법은 var newArray = [...글제목];
 
+// function App() {
+//   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+
+//   let [state, state함수] = useState(0);
+
+//   let [count, setCount] = useState(0);
+
+//   let posts = "강남 고기 맛집";
+
+//   // (1)
+//   // function 제목바꾸기() {
+//   //   글제목변경(["여자", "강남", "파이썬"]);
+//   // }
+
+//   // (2)
+//   function 제목바꾸기() {
+//     var newArray = [...글제목];
+//     newArray[0] = "여자코트 추천";
+//     글제목변경(newArray);
+//   }
+
+//   return (
+//     <div className="App">
+//       <div className="black-nav">
+//         <div>개발 blog</div>
+//       </div>
+//       // (1) (2)
+//       <button onClick={제목바꾸기}>버튼</button>
+//       <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+//       <div className="list">
+//         <div>
+//           <p>You clicked {count} times</p>
+//           <button onClick={() => setCount(count + 1)}>Click me</button>
+//         </div>
+//         <p>2월 17일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{글제목[0]}</h3>
+//         <p>2월 18일 발행</p>
+//       </div>
+//       <div className="list">
+//         <h3>{글제목[1]}</h3>
+//         <p>2월 19일 발행</p>      
+//       </div>
+   
+//     </div>
+//   );
+// }
+
+// 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
+// (1) function App() {},  function Modal(){} 각자 Component
+
+// (2)function, return넣고, <이름/>으로 호출
+// (3)소문자 이름, 한글이름 x
+// (4)  <>: fragments문법
+// (5) 다른component의 변수를 가져와 쓸수없음. props라는 문법을 이용해 state를 <Modal>까지 전해줘야 비로소 사용가능합니다.
+
 function App() {
-  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
-
-  let [state, state함수] = useState(0);
-
-  let [count, setCount] = useState(0);
-
-  let posts = "강남 고기 맛집";
-
-  // (1)
-  // function 제목바꾸기() {
-  //   글제목변경(["여자", "강남", "파이썬"]);
-  // }
-
-  // (2)
-  function 제목바꾸기() {
-    var newArray = [...글제목];
-    newArray[0] = "여자코트 추천";
-    글제목변경(newArray);
-  }
-
   return (
     <div className="App">
-      <div className="black-nav">
-        <div>개발 blog</div>
-      </div>
-      // (1) (2)
-      <button onClick={제목바꾸기}>버튼</button>
-      <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
-      <div className="list">
-        <div>
-          <p>You clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-        <p>2월 17일 발행</p>
-      </div>
-      <div className="list">
-        <h3>{글제목[0]}</h3>
-        <p>2월 18일 발행</p>
-      </div>
-      <div className="list">
-        <h3>{글제목[1]}</h3>
-        <p>2월 19일 발행</p>      
-      </div>
+    
+
+    <Modal></Modal>
+    <Modal/>
    
     </div>
   );
 }
 
+// (1) (3)
+function Modal(){
+  return(
+    //(4)
+    <>
+    <div className='modal'>
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
+      
+      </div>
+      <div></div>
+      </>
+  )
+}
+
 export default App;
+
