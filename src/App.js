@@ -390,7 +390,18 @@ function Modal2(){
 // (2-3) [ ]안의 array갯수만큼 가능
 
 // (3)반복할 html 추가
-// (3-2) return ( )
+// (3-2) return ( )추가
+
+// (4) (4-2) 글(parameter)는 array안에 있던 하나하나의 데이터 
+
+// (5) onClick적용가능? ㅇ
+
+// (6) for 반복문
+// 빈 array[]
+// 3번 반복
+// push로 html넣음
+// return
+// (6-2) js에서는 이렇게 실행, 리엑트에서는 jsx안으로 이동+ 데이터바인딩 { }
 
 function App9() {
   
@@ -408,8 +419,22 @@ function App9() {
   })
   console.log([뉴어레이]);
   
-
+// (2)
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+
+  // (5)
+  let [state, state함수] = useState(0);
+
+  // (6) for 반복문
+
+  function for반복문함수(){    
+    var 어레이 = [];
+    for (let i = 0; i < 3; i++) {
+     어레이.push(<div>for반복문함수</div>);  }
+    return 어레이
+  }
+// (6-2)
+  //  for반복문함수();
 
   return (
    <div className="App">
@@ -445,6 +470,31 @@ function App9() {
         ) })
      }
 
+    //  (4)
+    {
+      글제목.map(function (글) {
+        return(
+          <div className="list">
+          // (4-2)
+          <h3>{글}</h3>
+          <p>2월 18일 발행</p>
+        </div>
+        ) })
+     }
+
+    //  (5)
+    {
+      글제목.map(function (a) {
+        return(
+          <div className="list">
+          <h3>{a} <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3> </h3>
+          <p>2월 18일 발행</p>
+        </div>
+        ) })
+     }
+
+    //  (6)
+    {for반복문함수()}
 
    </div>
   );
