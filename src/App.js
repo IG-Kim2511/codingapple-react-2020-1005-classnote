@@ -277,54 +277,54 @@ function App6() {
 
 // 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
 // (1) function App() {},  function Modal(){} 각자 Component
-
 // (2)function, return넣고, <이름/>으로 호출
 // (3)소문자 이름, 한글이름 x
-// (4)  <>: fragments문법
+// (4)  <>: fragments문법 
+// : div대신에  <> </>으로 감싸는 방법.. 
+// : 왜인지 모르지만 이거쓰면 red color element 가 뜨면서 intellisense가 사용이 안됨. 그래서 나는 안쓰는 걸로...
 // (5) 다른component의 변수를 가져와 쓸수없음. props라는 문법을 이용해 state를 <Modal>까지 전해줘야 비로소 사용가능합니다.
 
 function App7() {
   return (
-    <div className="App">
+   <div className="App">
     <div className="black-nav">07 Component : </div>
+
+    // (1) (2)
     <Modal></Modal>
     <Modal/>
-   
-    </div>
+   </div>
   );
 }
 
 
-// (1) (3)
+// (1) (2)
 function Modal(){
   return(
     //(4)
-    <>
-    <div className='modal'>
+    <div>
+     <div className='modal'>
       <h2>title</h2>
       <p>date</p>
       <p>date</p>
       
       </div>
       <div></div>
-      </>
+    </div>
   )
 }
-
 
 // App
 function App(){
   return(
-    <>
-    <App4/>
-    <App5/>
-    <App6/>
-    <App7/>
-    
-    </>
+    <div>
+      <App4/>
+      <App5/>
+      <App6/>
+      <App7/>
+      
+    </div>
   )
 }
-
 
 export default App;
 
