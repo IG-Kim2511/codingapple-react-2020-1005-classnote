@@ -360,17 +360,10 @@ let [modal,modal변경]=useState(false);
 
    <br/>
   //  (4)
- 
-  <button onClick={()=>{modal변경(true)}}>modal2열기 button</button>  <br/>
+   <button onClick={()=>{modal변경(true)}}>modal2열기 button</button>  <br/>
  
   // (5)
-
-  <button onClick={()=>{modal변경(!modal)}}>modal2열기닫기 button</button><br/>
- 
-
-  
-  
- 
+  <button onClick={()=>{modal변경(!modal)}}>modal2열기닫기 button</button><br/> 
    </div>
   );
 }
@@ -389,7 +382,73 @@ function Modal2(){
   )
 }
 
+// 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때
+// (1) .map( )
+// (2) { }데이터바인딩 잊지말기
+// (2-1)글제목state의 array갯수만큼 반복
+// (2-2)arrow function 가능
+// (2-3) [ ]안의 array갯수만큼 가능
 
+// (3)반복할 html 추가
+// (3-2) return ( )
+
+function App9() {
+  
+  // (1) .map( )
+  // 이름.map(콜백함수);
+  // a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
+  // [4,6,8]이 return됨
+  // 보통 변수에 담아서 사용
+  // console.log([뉴어레이]);  확인해보면 -> [ 4.6.8] 출력됨 
+
+  var 어레이 =[2,3,4];
+
+  var 뉴어레이 = 어레이.map(function(a){
+    return a*2
+  })
+  console.log([뉴어레이]);
+  
+
+  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+
+  return (
+   <div className="App">
+    <div className="black-nav"> 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때 </div>
+
+    // (2) (2-1)
+    {
+      글제목.map(function(){
+        return <div>글제목</div>
+      })
+    }
+    // (2-2)  
+    {
+      글제목.map(()=>{
+        return <div>글제목</div>
+      })
+    }
+
+    //(2-3))
+    {
+      [1,2].map(function(){
+        return <div>2번 반복</div>
+      })
+    }
+    // (3) (3-2)
+    {
+      글제목.map(function () {
+        return(
+          <div className="list">
+          <h3>{글제목[0]}</h3>
+          <p>2월 18일 발행</p>
+        </div>
+        ) })
+     }
+
+
+   </div>
+  );
+}
 
 // App
 function App(){
@@ -402,7 +461,7 @@ function App(){
       <App6/>
       <App7/>
       <App8/>
-      
+      <App9/>      
     </div>
   )
 }
