@@ -10,9 +10,19 @@ import logo from "./logo.svg";
 import "./App.css";
 
 // 01 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
-// 02 2 리액트 React 설치
+
+// 02 리액트 React 설치
 // 설치: npx create-react-app 폴더이름
 // 미리보기:  npm start
+
+function App2(){
+  return(
+      <div>      
+          설치: npx create-react-app 폴더이름 <br/>
+          미리보기:  npm start
+      </div>
+  )
+}
 
 // 03 JSX를 이용해 HTML 페이지 제작
 // 여기 쓰는 것은 html이 아닌 JSX. html과 거의 똑같음. 다만 react.jsx도 js이므로, js와 겹치는 문법은 쓸 수 없음. 보통 { }로 대체해서 씀
@@ -46,7 +56,7 @@ function App3(){
 
   return(
   <div className="App">
-      <div className="black-nav"> 03 JSX를 이용해 HTML 페이지 제작 </div>  
+      <div className="black-nav"> 03 JSX </div>  
 
       // (1)
       <h4>{posts} </h4>;
@@ -244,15 +254,9 @@ function App6() {
     <div className="App">
     <div className="black-nav"> 06 숙제 해설 : 블로그 글 수정버튼 만들기</div>
          // (1) (2)
-      <button onClick={제목바꾸기}>버튼</button>
-      <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
-      <div className="list">
-        <div>
-          <p>You clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-        <p>2월 17일 발행</p>
-      </div>
+       <div>
+          <button onClick={제목바꾸기}>버튼</button>
+       </div>
       <div className="list">
         <h3>{글제목[0]}</h3>
         <p>2월 18일 발행</p>
@@ -260,6 +264,15 @@ function App6() {
       <div className="list">
         <h3>{글제목[1]}</h3>
         <p>2월 19일 발행</p>      
+      </div>
+      
+      <div className="list">
+        <div>
+        <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+          <p>You clicked {count} times</p>
+          <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
+        <p>2월 17일 발행</p>
       </div>
    
     </div>
@@ -308,6 +321,7 @@ function Modal(){
 function App(){
   return(
     <div>
+      <App2/>
       <App3/>
       <App4/>
       <App5/>
