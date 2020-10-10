@@ -3,6 +3,7 @@
   font-size: 1rem;
 }
 
+
 /* 03 JSX를 이용해 HTML 페이지 제작 */
 .black-nav {
   background : black;
@@ -17,6 +18,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.img1{
+  width: 10%;
 }
 
 /* 04 중요한 데이터는 변수말고 state로 만들랬죠 */

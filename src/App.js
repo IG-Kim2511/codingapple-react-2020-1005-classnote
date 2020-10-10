@@ -31,46 +31,37 @@ import "./App.css";
 
 // (5-3)style을 따로 변수에 넣고 데이터바인딩{ }사용..가능함
 
-// function App3() {
-// // (1)
-//   var posts = "강남 고기 맛집";
+function App3(){
 
-// // (2)
-// function 함수(){
-//   return 100
-// }
+  // (1)
+  var posts = "강남 고기 맛집";
 
-//  // (5-3)
-// var posts2 = { color: "blue", fontSize: "30px" };
+  // (2)
+  function 함수(){
+      return 100
+  }
 
-//   return (
-//     <div className="App">
-//       <div className="black-nav">
-//         <div>개발 blog</div>
-// // (1)
-//            <h4>{posts} </h4>;
-// // (2)
-// <h4>{ 함수() }</h4>
-// // (3)
-// <img src={logo}></img>
-//       </div>
+  // (5-3)
+  var posts2 = { color: "blue", fontSize: "30px" };
 
-//       <div className="black-nav">
-//         <div>개발 blog</div>
-// //(4)
-//         <div className={data}>개발 blog</div>
-//       </div>
+  return(
+  <div className="App">
+      <div className="black-nav"> 03 JSX를 이용해 HTML 페이지 제작 </div>  
 
-// // (5-2)
-// <div style={{ color: "blue", fontSize: "30px" }}>개발 blog </div>
+      // (1)
+      <h4>{posts} </h4>;
+      // (2)
+      <h4>(함수())</h4>
+      // (3)
+      <img src={ logo } alt="" className='img1'/>
 
-// // (5-3)
-// <div style={ post2 }>개발 blog </div>
-
-//     </div>
-//   );
-// }
-
+      // (4)
+      <h4 className="{posts}">개발 blog</h4>
+      // (5-2)
+<div style={{ color: "blue", fontSize: "30px" }}>개발 blog </div>
+  </div>
+  )
+}
 
 
 // 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
@@ -317,6 +308,7 @@ function Modal(){
 function App(){
   return(
     <div>
+      <App3/>
       <App4/>
       <App5/>
       <App6/>
