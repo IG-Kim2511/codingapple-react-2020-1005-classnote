@@ -317,6 +317,80 @@ function Modal(){
   )
 }
 
+// 08 클릭하면 동작하는 UI (모달창) 만드는 법
+// 바닐라js: sytle="displa:none"/"block".....
+
+// (1)Component 선언 (<modal2></modal2>) 아무곳에 넣을수있음
+
+// (2)Conditional Expressions (조건연산자,삼항연산자) : react에서 if문법
+// { } 리액트 문법 + Conditional Expressions 사용.
+
+//   if(1 < 3 ){
+//     <Modal2></Modal2>
+//   }else{
+//     <div></div>
+//   }
+
+//(3) null : 텅빈 html이라는 뜻, 
+// 스위치끌때는 텅빈 화면만 나오게 설정
+// ( 리액트에서 텅빈 HTML을 의미하는 코드는 null이라는 자료형입니다.)
+
+// (4) state로 html 보임.안보임 을 저장해둠
+// if문에서 state가 true일때 html보여줌
+// false : 사이트 첫 로딩때 modal2창 안보이게..
+
+// (5) 열기닫기 버튼
+// modal이 true라면 false가 되고, modal이 false면 true가 됩니다. 
+// 열려있으면 닫히고 닫혀있으면 열리게 됩니다
+
+function App8() {
+  // (4)
+let [modal,modal변경]=useState(false);
+
+  return (
+   <div className="App">
+    <div className="black-nav">08 클릭하면 동작하는 UI (모달창) 만드는 법 </div>
+
+  //  (1) (2) (3)
+    { 
+      modal === true
+      ? <Modal2></Modal2>
+      : null
+   }
+
+   <br/>
+  //  (4)
+ 
+  <button onClick={()=>{modal변경(true)}}>modal2열기 button</button>  <br/>
+ 
+  // (5)
+
+  <button onClick={()=>{modal변경(!modal)}}>modal2열기닫기 button</button><br/>
+ 
+
+  
+  
+ 
+   </div>
+  );
+}
+
+function Modal2(){
+  return(
+    <div>
+     <div className='modal'>
+        <h2>title</h2>
+        <p>date</p>
+        <p>date</p>
+      
+      </div>
+      <div></div>
+    </div>
+  )
+}
+
+
+
 // App
 function App(){
   return(
@@ -327,6 +401,7 @@ function App(){
       <App5/>
       <App6/>
       <App7/>
+      <App8/>
       
     </div>
   )
