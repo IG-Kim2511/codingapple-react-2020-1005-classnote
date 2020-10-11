@@ -539,6 +539,38 @@ function Modal3(props){
   )
 }
 
+// 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기
+
+function App11() {
+
+
+let [state, state변경] = useState(["남자", "강남", "파이썬"]);
+
+  return (
+   <div className="App">
+    <div className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </div>
+
+    <Modal4 mynaming={state}></Modal4>
+   </div>
+  );
+}
+
+// (2) (2-2)
+function Modal4(props){
+  return(
+    <div>
+     <div className='modal'>
+
+        <h2>title {props.mynaming[1]}</h2>
+        <p>date</p>
+        <p>date</p>
+     </div>
+      <div></div>
+    </div>
+  )
+}
+
+
 // App
 function App(){
   return(
@@ -552,6 +584,7 @@ function App(){
       <App8/>
       <App9/>      
       <App10/>      
+      <App11/>      
     </div>
   )
 }
