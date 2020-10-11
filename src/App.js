@@ -501,6 +501,14 @@ function App9() {
 }
 
 // 10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다
+// parent Component , child Component
+// (1) <자식컴포넌트 전송할이름={state명}> 이렇게 사용해주신 후
+// (1-2) =의미 : 글제목state를 { }데이터바인딩해서 mynaming에 집어넣음
+
+// (2) 자식컴포넌트 선언하는 function 안에 파라미터 props 를 하나 만들어주시면 됩니다. 
+// (2-2) Props 파라미터 : 부모에게 전달받은 props가 들어감
+// (2-3) props 이름 마음대로 정할수있음. 그냥 관습적으로 props사용
+// (2-4) props.mynaming[1] 1번째 array사용 : "강남"
 
 function App10() {
   // (4)
@@ -510,15 +518,18 @@ let [state, state변경] = useState(["남자", "강남", "파이썬"]);
   return (
    <div className="App">
     <div className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </div>
+    // (1) (1-2)
     <Modal3 mynaming={state}></Modal3>
    </div>
   );
 }
 
+// (2) (2-2)
 function Modal3(props){
   return(
     <div>
      <div className='modal'>
+     // (2) (2-4)
         <h2>title {props.mynaming[1]}</h2>
         <p>date</p>
         <p>date</p>
