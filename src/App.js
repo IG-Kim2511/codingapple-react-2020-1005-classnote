@@ -82,7 +82,7 @@ function App3(){
 
 //(2) useState('남자코트');
 // useState 를 es6 destructuring문법으로 바꿈
-// let [state, state함수] = useState(0);
+// let [state, state변경] = useState(0);
 // state데이터변경함수는 나중에
 
 // (3) array 사용가능( "문자,숫자,array,object 사용가능")
@@ -137,9 +137,9 @@ function App4() {
 
 // (2) (3) state : 문자. state function : 문자 변경하는 함수
 
-// state함수(); 함수를 가져다 쓸수있음
-// state함수(1);      ---> count(0)이 1로 바뀜
-// state함수(가나다);---> count(0)이 '가나다'로 바뀜
+// state변경(); 함수를 가져다 쓸수있음
+// state변경(1);      ---> count(0)이 1로 바뀜
+// state변경(가나다);---> count(0)이 '가나다'로 바뀜
 
 // 그냥쓰면 재랜더링이 무한반복됨
 
@@ -147,7 +147,7 @@ function App5() {
   let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
 
   // (2)
-  let [state, state함수] = useState(0);
+  let [state, state변경] = useState(0);
 
   // (3)
   let [count, setCount] = useState(0);
@@ -176,7 +176,7 @@ function App5() {
           {문자[0]}{" "}
           <button
             onClick={() => {
-              state함수(state + 1);
+              state변경(state + 1);
             }}
           >
             👍
@@ -184,7 +184,7 @@ function App5() {
           {state}
         </h3>
 
-<h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+<h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3>
         // (3)
         <div>
           <p>You clicked {count} times</p>
@@ -232,7 +232,7 @@ function App5() {
 function App6() {
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
-  let [state, state함수] = useState(0);
+  let [state, state변경] = useState(0);
 
   let [count, setCount] = useState(0);
 
@@ -268,7 +268,7 @@ function App6() {
       
       <div className="list">
         <div>
-        <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3>
+        <h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3>
           <p>You clicked {count} times</p>
           <button onClick={() => setCount(count + 1)}>Click me</button>
         </div>
@@ -423,7 +423,7 @@ function App9() {
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   // (5)
-  let [state, state함수] = useState(0);
+  let [state, state변경] = useState(0);
 
   // (6) for 반복문
 
@@ -487,7 +487,7 @@ function App9() {
       글제목.map(function (a) {
         return(
           <div className="list">
-          <h3>{a} <h3> <button onClick={ ()=>{ state함수 (  state  + 1) }}> 👍</button> {state} </h3> </h3>
+          <h3>{a} <h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3> </h3>
           <p>2월 18일 발행</p>
         </div>
         ) })
@@ -498,6 +498,34 @@ function App9() {
 
    </div>
   );
+}
+
+// 10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다
+
+function App10() {
+  // (4)
+
+let [state, state변경] = useState(["남자", "강남", "파이썬"]);
+
+  return (
+   <div className="App">
+    <div className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </div>
+    <Modal3 mynaming={state}></Modal3>
+   </div>
+  );
+}
+
+function Modal3(props){
+  return(
+    <div>
+     <div className='modal'>
+        <h2>title {props.mynaming[1]}</h2>
+        <p>date</p>
+        <p>date</p>
+     </div>
+      <div></div>
+    </div>
+  )
 }
 
 // App
@@ -512,6 +540,7 @@ function App(){
       <App7/>
       <App8/>
       <App9/>      
+      <App10/>      
     </div>
   )
 }
