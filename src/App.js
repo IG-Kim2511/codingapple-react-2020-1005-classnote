@@ -183,7 +183,7 @@ function App5() {
           </button>{" "}
           {state}
         </h3>
-
+        
 <h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3>
         // (3)
         <div>
@@ -515,6 +515,7 @@ function App10() {
 
 let [state, state변경] = useState(["남자", "강남", "파이썬"]);
 
+
   return (
    <div className="App">
     <div className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </div>
@@ -540,31 +541,71 @@ function Modal3(props){
 }
 
 // 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기
+// (1)버튼 누를때 modal창이 바뀌게
+// (1-2)변수.. state로 만듬. 기본값 0
+// (1-3) propsclicked제목 만들어서 props글제목[ ] 안에 넣음
+// (1-4) clicked제목변경을 0,1,2 으로 바꾸면 완성 ( -> props글제목[0] props글제목[1] props글제목[2] )
+
+// (2) button 누를때, modal창이 바뀌게
+// map()
+// map 반복문을 쓸 때 i라는 파라미터를 뒤에 추가해주시면 됩니다. 
+// 두번째 파라미터는 바로 반복문이 돌면서 0,1,2,3 … 이렇게 하나씩 증가하는 정수를 뜻합니다.
+// 전문 개발용어로 enumerate한다 라고 하는데 그건 알필요가 없고
+// 그냥 i 저렇게 써주시면 0,1,2,3,4… 이런 변수입니다. 
+
 
 function App11() {
 
 
-let [state, state변경] = useState(["남자", "강남", "파이썬"]);
+
+// (1-2)
+let[clicked제목,clicked제목변경]=  useState(0);
+// (1-3)
+let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+
+// let [state, state변경] = useState(0);
+
 
   return (
    <div className="App">
     <div className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </div>
 
-    <Modal4 mynaming={state}></Modal4>
+    // (1) (1-4)
+      <button onClick={ ()=>{ clicked제목변경(0) } }>button1</button>
+      <button onClick={ ()=>{ clicked제목변경(1) } }>button2</button>
+      <button onClick={ ()=>{ clicked제목변경(2) } }>button3</button>
+
+
+    // (1-3)
+      <Modal4 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal4>
+    
+    // (2)
+    {
+      글제목.map(function (글,i) {
+        return(
+          <div className="list">
+          <button onClick={ ()=>{ clicked제목변경(i) } } >{글}  </button>
+          </div>
+        ) })
+     }
+
+
+
+
    </div>
   );
 }
 
-// (2) (2-2)
+
 function Modal4(props){
   return(
     <div>
-     <div className='modal'>
-
-        <h2>title {props.mynaming[1]}</h2>
-        <p>date</p>
-        <p>date</p>
-     </div>
+      <div className='modal'>
+      // (1-3)
+          <h2>title {props.props글제목[props.propsclicked제목] } </h2>
+          <p>date</p>
+          <p>date</p>
+      </div>
       <div></div>
     </div>
   )
