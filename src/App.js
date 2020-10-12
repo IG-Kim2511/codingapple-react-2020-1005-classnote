@@ -559,9 +559,6 @@ let[clicked제목,clicked제목변경]=  useState(0);
 // (1-3)
 let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
-// let [state, state변경] = useState(0);
-
-
   return (
    <div className="App">
     <div className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </div>
@@ -584,10 +581,6 @@ let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
           </div>
         ) })
      }
-
-
-
-
    </div>
   );
 }
@@ -608,6 +601,56 @@ function Modal4(props){
 }
 
 
+// 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
+
+function App12() {
+
+
+  let[clicked제목,clicked제목변경]=  useState(0);
+
+  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+    
+  
+    return (
+     <div className="App">
+      <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
+  
+
+        <button onClick={ ()=>{ clicked제목변경(0) } }>button1</button>
+        <button onClick={ ()=>{ clicked제목변경(1) } }>button2</button>
+        <button onClick={ ()=>{ clicked제목변경(2) } }>button3</button>
+  
+
+        <Modal12 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal12>
+  
+      {
+        글제목.map(function (글,i) {
+          return(
+            <div className="list">
+            <button onClick={ ()=>{ clicked제목변경(i) } } >{글}  </button>
+            </div>
+          ) })
+       }
+     </div>
+    );
+  }
+  
+  
+  function Modal12(props){
+    return(
+      <div>
+        <div className='modal'>
+        // (1-3)
+            <h2>title {props.props글제목[props.propsclicked제목] } </h2>
+            <p>date</p>
+            <p>date</p>
+        </div>
+        <div></div>
+      </div>
+    )
+  }
+
+  
 // App
 function App(){
   return(
@@ -622,6 +665,7 @@ function App(){
       <App9/>      
       <App10/>      
       <App11/>      
+      <App12/>      
     </div>
   )
 }
