@@ -676,7 +676,7 @@ function App12() {
 // 글제목변경state에 글제목state 추가
 // but state(글제목state)를 그대로 쓰는것은 나쁜습관  - (실행안됨)
 
-// (3)spread operator
+// (2-2)spread operator : state는 바로 쓰면안되고, 다른변수에 담아서(복사해서) 사용해야함.
 // 글제목state 를 arrayCopy에 담아서(복사해서)
 // arrayCopy를 사용할 것  (끝)
 
@@ -709,8 +709,7 @@ function App12() {
         </div>
 
         <div className="publish">
-              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-   
+              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>   
           <button onClick={ ()=>{
                  //  (2)
             글제목.unshift(입력값);
@@ -719,10 +718,9 @@ function App12() {
 
         <div className="publish">
           <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-     
-          <button onClick={ ()=>{
+            <button onClick={ ()=>{
             // ajax로 서버에 보내는 코딩 추가 (나중에 공부)
-                 // (3)
+                 // (2-2)
             var arrayCopy = [...글제목]
             arrayCopy.unshift(입력값);
             글제목변경( arrayCopy ) }}>저장</button>
