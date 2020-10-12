@@ -602,6 +602,34 @@ function Modal4(props){
 
 
 // 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
+// Q: input입력한 값 
+// (1) 2가지 방법 사용 가능  <input/> , <input></input>
+
+// (2)사용자가 input에 입력한 value를 state에 저장함
+// ""초기값..빈칸으로 설정
+
+// (2-2)  onInput / onChange :
+//  input에 무언가 입력할 때마다 특정 함수를 동작시키고 싶을 때 사용합니다.( 입력이 될때 , 안의 함수가 실행됨.)
+// JS에서는 다른의미인데, react에서는 같은 의미로 쓰임.
+// (내 컴퓨터에서는 onInput만 제대로 동작했음)
+
+// (2-3)
+// 그래서 입력할 때마다 console.log(e.target.value)를 콘솔창에 출력하라고 써놓은 것입니다. 
+// e.target이라는건 쌩자바스크립트 문법으로 ‘지금 이벤트가 동작하는 HTML요소’
+// .value라는건 input등에 입력한 값을 의미합니다. 
+
+// (2-4)
+// e.target.value (input 에 입력한 값)에 따라서 ,입력값변경state가 변경됨
+
+// (2-5)
+// 변경된 입력값 출력
+
+// (3)
+// warning 과 error는 다름. warining떠도 실행에는 문제가 없음
+// 리액트는 반복문(map ,for...etc) 돌린 HTML 요소엔 꼭 key={}를 적으라고 권장합니다. 
+// key={} 안에는 반복문이 돌 때마다 0,1,2,3… 이렇게 하나씩 증가하는 변수같은걸 넣어주시면 됩니다. 
+
+
 
 function App12() {
 
@@ -609,24 +637,33 @@ function App12() {
   let[clicked제목,clicked제목변경]=  useState(0);
 
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+
+  // (2)
+  let[입력값,입력값변경]=useState('');
     
   
     return (
      <div className="App">
       <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
   
+      // (1) (2-2)
+      <input type="text" onInput={ ()=>{ console.log('안녕') } }/>
 
-        <button onClick={ ()=>{ clicked제목변경(0) } }>button1</button>
-        <button onClick={ ()=>{ clicked제목변경(1) } }>button2</button>
-        <button onClick={ ()=>{ clicked제목변경(2) } }>button3</button>
-  
+      // (2-3)
+      <input type="text" onInput={ (e)=>{ console.log(e.target.value ) } }/>
+      
+      // (2-4)
+      <input type="text" onInput={ (e)=>{ 입력값변경(e.target.value ) } }/>
+     
+      // (2-5)변경된 입력값 출력 : 
+        { 입력값} 
 
-        <Modal12 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal12>
-  
+
       {
         글제목.map(function (글,i) {
           return(
-            <div className="list">
+            // (3)
+            <div className="list" key={i}>
             <button onClick={ ()=>{ clicked제목변경(i) } } >{글}  </button>
             </div>
           ) })
@@ -636,19 +673,6 @@ function App12() {
   }
   
   
-  function Modal12(props){
-    return(
-      <div>
-        <div className='modal'>
-        // (1-3)
-            <h2>title {props.props글제목[props.propsclicked제목] } </h2>
-            <p>date</p>
-            <p>date</p>
-        </div>
-        <div></div>
-      </div>
-    )
-  }
 
   
 // App
