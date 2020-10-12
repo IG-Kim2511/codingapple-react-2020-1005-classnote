@@ -629,19 +629,13 @@ function Modal4(props){
 // 리액트는 반복문(map ,for...etc) 돌린 HTML 요소엔 꼭 key={}를 적으라고 권장합니다. 
 // key={} 안에는 반복문이 돌 때마다 0,1,2,3… 이렇게 하나씩 증가하는 변수같은걸 넣어주시면 됩니다. 
 
-
-
 function App12() {
-
-
   let[clicked제목,clicked제목변경]=  useState(0);
-
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   // (2)
   let[입력값,입력값변경]=useState('');
-    
-  
+      
     return (
      <div className="App">
       <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
@@ -658,7 +652,6 @@ function App12() {
       // (2-5)변경된 입력값 출력 : 
         { 입력값} 
 
-
       {
         글제목.map(function (글,i) {
           return(
@@ -672,6 +665,23 @@ function App12() {
     );
   }
   
+  // 13 input 다루기 2 : 블로그 글발행 기능 만들기
+  
+  function App13 (){
+    let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']);
+    return (
+      <div className="App">
+      <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
+      <div>
+        HTML 잔뜩 있는 곳
+        <div className="publish">
+          <input />
+          <button>저장</button>
+        </div>
+      </div>
+      </div>
+    )
+  }
   
 
   
@@ -690,6 +700,7 @@ function App(){
       <App10/>      
       <App11/>      
       <App12/>      
+      <App13/>      
     </div>
   )
 }
