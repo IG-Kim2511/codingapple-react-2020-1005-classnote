@@ -409,8 +409,7 @@ function Modal2(){
 // return
 // (6-2) js에서는 이렇게 실행, 리엑트에서는 jsx안으로 이동+ 데이터바인딩 { }
 
-function App9() {
-  
+function App9() {  
 
 // (1)예시 설명
   var 어레이 =[2,3,4];
@@ -670,18 +669,16 @@ function App12() {
 
 // (1) onInput : 입력한 글... 입력값state에 저장
 // (1-2) onClick : 저장버튼 click, 입력값state에를, 글제목state.array에추가
-// 여기에 코딩하거나,  function으로 따로 코딩 후 호출
+// 여기에 코딩하거나,  function으로 따로 코딩 후 호출 (단순코딩..끝)
 
 // (2)unshift : array 맨앞에 data추가하는 문법
 // 글제목state array에 '입력값state'추가
 // 글제목변경state에 글제목state 추가
-// but state(글제목state)를 그대로 쓰는것은 나쁜습관  - 실행안됨
-
+// but state(글제목state)를 그대로 쓰는것은 나쁜습관  - (실행안됨)
 
 // (3)spread operator
 // 글제목state 를 arrayCopy에 담아서(복사해서)
 // arrayCopy를 사용할 것  (끝)
-
 
   function App13 (){
 
@@ -694,19 +691,15 @@ function App12() {
       <div className="App">
       <div className="black-nav"> 13 input 다루기 2 : 블로그 글발행 기능 만들기 </div>
       <div>
-      <div>
-          <div className="list">
-          <h3>{글제목[0]}</h3>
+     
+      {
+        글제목.map(function (글,i) {
+          return(
+            <div className="list" key={i}>
+            <h3>{글}</h3>           
           </div>
-
-          <div className="list">
-            <h3>{글제목[1]}</h3>
-          </div>
-
-          <div className="list">
-            <h3>{글제목[2]}</h3>            
-          </div>
-        </div>
+          ) })
+       }                
 
         <div className="publish">
         // (1)
@@ -717,17 +710,19 @@ function App12() {
 
         <div className="publish">
               <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-        //  (2)
+   
           <button onClick={ ()=>{
+                 //  (2)
             글제목.unshift(입력값);
             글제목변경( 글제목 ) }}>저장</button>
         </div>
 
         <div className="publish">
           <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-          // (3)
+     
           <button onClick={ ()=>{
             // ajax로 서버에 보내는 코딩 추가 (나중에 공부)
+                 // (3)
             var arrayCopy = [...글제목]
             arrayCopy.unshift(입력값);
             글제목변경( arrayCopy ) }}>저장</button>
