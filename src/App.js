@@ -641,7 +641,7 @@ function App12() {
       <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
   
       // (1) (2-2)
-      <input type="text" onInput={ ()=>{ console.log('안녕') } }/>
+      <input type="text" onChange={ ()=>{ console.log('안녕') } }/>
 
       // (2-3)
       <input type="text" onInput={ (e)=>{ console.log(e.target.value ) } }/>
@@ -666,19 +666,75 @@ function App12() {
   }
   
   // 13 input 다루기 2 : 블로그 글발행 기능 만들기
-  
+// Q: 글 적고 저장버튼을 click 때 글이 하나 추가되게 하기
+
+// (1) onInput : 입력한 글... 입력값state에 저장
+// (1-2) onClick : 저장버튼 click, 입력값state에를, 글제목state.array에추가
+// 여기에 코딩하거나,  function으로 따로 코딩 후 호출
+
+// (2)unshift : array 맨앞에 data추가하는 문법
+// 글제목state array에 '입력값state'추가
+// 글제목변경state에 글제목state 추가
+// but state(글제목state)를 그대로 쓰는것은 나쁜습관  - 실행안됨
+
+
+// (3)spread operator
+// 글제목state 를 arrayCopy에 담아서(복사해서)
+// arrayCopy를 사용할 것  (끝)
+
+
   function App13 (){
+
+    // (1-2)
     let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']);
+    // (1)
+    let[입력값,입력값변경]=useState('');
+
     return (
       <div className="App">
-      <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
+      <div className="black-nav"> 13 input 다루기 2 : 블로그 글발행 기능 만들기 </div>
       <div>
-        HTML 잔뜩 있는 곳
-        <div className="publish">
-          <input />
-          <button>저장</button>
+      <div>
+          <div className="list">
+          <h3>{글제목[0]}</h3>
+          </div>
+
+          <div className="list">
+            <h3>{글제목[1]}</h3>
+          </div>
+
+          <div className="list">
+            <h3>{글제목[2]}</h3>            
+          </div>
         </div>
+
+        <div className="publish">
+        // (1)
+          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+          // (1-2)
+          <button onClick={ ()=>{ 글제목변경(  [입력값,'남자코트추천', '강남우동맛집', '파이썬독학'] ) }  }>저장</button>
+        </div>
+
+        <div className="publish">
+              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+        //  (2)
+          <button onClick={ ()=>{
+            글제목.unshift(입력값);
+            글제목변경( 글제목 ) }}>저장</button>
+        </div>
+
+        <div className="publish">
+          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+          // (3)
+          <button onClick={ ()=>{
+            // ajax로 서버에 보내는 코딩 추가 (나중에 공부)
+            var arrayCopy = [...글제목]
+            arrayCopy.unshift(입력값);
+            글제목변경( arrayCopy ) }}>저장</button>
+                  </div>
       </div>
+
+   
       </div>
     )
   }
