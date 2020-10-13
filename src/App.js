@@ -73,7 +73,6 @@ function App3(){
   )
 }
 
-
 // 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
 // 데이터는 variable(변수) or state에 넣을수있음
 
@@ -123,10 +122,6 @@ function App4() {
     </div>
   );
 }
-
-
-
-
 
 // 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
 
@@ -204,13 +199,11 @@ function App5() {
   );
 }
 
-
-
 // 06 숙제 해설 : 블로그 글 수정버튼 만들기
 // (1)onClick에 함수넣기
 // 함수에 ()붙이면, 클릭이전에 바로 함수실행됨. 그래서 뺌
 
-// (2)알고리즘
+// (2)spread operator : state는 바로 쓰면안되고, 다른변수에 담아서(복사해서) 사용해야함.
 // 0. 글제목이라는 state는 직접 수정할 수 없습니다. 그래서.. 복사본을 만들기로 합니다.
 // 1. 글제목이라는 state의 복사본을 만들어 newArray라는 변수에 저장합니다.
 // 2. newArray의 0번째 데이터를 ‘여자코트 추천’으로 변경합니다.
@@ -243,8 +236,9 @@ function App6() {
   //   글제목변경(["여자", "강남", "파이썬"]);
   // }
 
-  // (2)
+  
   function 제목바꾸기() {
+    // (2)
     var newArray = [...글제목];
     newArray[0] = "여자코트 추천";
     글제목변경(newArray);
@@ -731,7 +725,58 @@ function App12() {
       </div>
     )
   }
+
+  //  14 class를 이용한 옛날 옛적 React 문법
   
+  function App14 (){
+
+    let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']);
+
+    let[입력값,입력값변경]=useState('');
+
+    return (
+      <div className="App">
+      <div className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </div>
+      <div>
+     
+      {
+        글제목.map(function (글,i) {
+          return(
+            <div className="list" key={i}>
+            <h3>{글}</h3>           
+          </div>
+          ) })
+       }                
+
+        <div className="publish">
+
+          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+   
+          <button onClick={ ()=>{ 글제목변경(  [입력값,'남자코트추천', '강남우동맛집', '파이썬독학'] ) }  }>저장</button>
+        </div>
+
+        <div className="publish">
+              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>   
+          <button onClick={ ()=>{
+     
+            글제목.unshift(입력값);
+            글제목변경( 글제목 ) }}>저장</button>
+        </div>
+
+        <div className="publish">
+          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+            <button onClick={ ()=>{
+  
+            var arrayCopy = [...글제목]
+            arrayCopy.unshift(입력값);
+            글제목변경( arrayCopy ) }}>저장</button>
+                  </div>
+      </div>
+
+   
+      </div>
+    )
+  }
 
   
 // App
@@ -750,6 +795,7 @@ function App(){
       <App11/>      
       <App12/>      
       <App13/>      
+      <App14/>      
     </div>
   )
 }
