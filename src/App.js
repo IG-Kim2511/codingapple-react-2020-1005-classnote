@@ -2,7 +2,7 @@
 /*eslint-disable */
 
 // 04 useState : 리액트 내장함수 state 쓰겠다는 뜻
-import React, { useState } from "react";
+import React, { Profiler, useState } from "react";
 
 // 03-(3) 이미지 넣기 : 다른폴더에서 import해온 후, 이름지어주고, 그이름을 { }에 넣어서 사용
 import logo from "./logo.svg";
@@ -727,55 +727,104 @@ function App12() {
   }
 
   //  14 class를 이용한 옛날 옛적 React 문법
+  // (1)
+// 1. class를 하나 만들고 이름짓습니다.
+// 2. 그리고 React.Component라는 이상한 것을 extends한다고 써줍니다.
+// 3. constructor(){} 함수를 언급해줍니다.
+// 3. render(){} 함수 안에 원하는 HTML을 적습니다.
+
+// (1-2)
+// 그럼 이제 <Profile />을 원하는 곳에 첨부하면 Component 만들기 끝입니다.
   
+// (2)class
+// class는 변수/함수를 보관하는 덩어리입니다.
+// extends는 덩어리를 만들 때 오른쪽에 있는 놈 성질을 물려받아서 class덩어리를 만들겠다는 소리입니다.
+// React.Component는 컴포넌트 성질을 갖고있는 덩어리입니다.
+// 이것을 extends 해서 class를 만들면 우리가 계속 사용해왔던 컴포넌트를 만들어낼 수 있습니다.
+// (리액트 라이브러리 사용법일 뿐입니다)
+
+// (3)state저장
+// 1. state저장할 땐 constructor() 안에 this.state 라는 변수에 전부 보관하셔야합니다.
+// constructor()라는 부분은 변수와 함수가 가득한 class 덩어리를 만들 때.. 새로운 변수를 넣는 공간입니다.
+// super()는 “extends 했던 React.Component 라는 덩어리에 있던 변수들을 그대로 물려받아 쓰겠습니다~” 라는 뜻이고 꼭 먼저 써주셔야 super() 밑에서 state를 만들 수 있습니다.
+
+// (3-2) this.state.state명
+// // 2. 그리고 꺼내쓸 때는 this.state.state명 이렇게 쓰시면 됩니다.
+
+// (4) state변경 .  setState
+// 버튼을 누를 때 이름을 ‘Park’으로 변경하는 기능을 만들어봅시다.
+// onClick이라든지 이런건 똑같습니다. 근데 state를 변경하실 때는 setState라는 정해진 함수이름을 쓰셔야합니다.
+ 
+// 1. 버튼만들고 onClick 이런거 넣는건 똑같습니다.
+// 2. state를 변경하실 땐 this.setState() 라는 내장함수를 꼭 쓰셔야합니다.
+// 그리고 소괄호()안에는 바꾸고 싶은 state 이름과 값만 적어주시면 됩니다.
+ 
+// 주의) 신문법으로 만든 state 변경함수들은 아예 state를 바꿔치기해주는 역할인데
+// 예전문법 setState()는 딱 필요한 부분만 수정해주고 나머지는 건들지 않습니다.
+
+// (5)changeName (JS. class문법안에서 함수 만드는 문법)
+// 1. 버튼안에 있는 코드가 너무 길어서 함수로 빼고 싶어서 함수를 만들었습니다.
+// 2. 모든 커스텀 함수는 저기 저 changeName 자리에 만들어주시면 됩니다. 그리고 필요한 코드를 담습니다.
+// 3. 그리고 changeName 이라는 함수 이름을 필요한 자리에 넣어줬습니다. 근데 this 까먹지맙시다.
+
+// 맞는 방법인데 에러가납니다.
+// 왜냐면 this.setState()라는 코드의 this가 이상해져서 그렇습니다.
+// 자바스크립트에선 function(){} 을 쓴다면 안에있는 this값이 새롭게 재정의됩니다.
+// 그래서 this.setState()에서 사용할 this값도 의도와는 다르게 변형되고만 것입니다.
+
+// (5-2)
+// 그래서 this가 재정의되지않게
+// 그래서 1. 함수를 쓸 때 this.changeName.bind(this) 이렇게 사용하시거나
+
+// (5-3)
+// 아니면 2. 함수를 아예 arrow function으로 바꿔주시면 됩니다.
+
   function App14 (){
-
-    let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']);
-
-    let[입력값,입력값변경]=useState('');
 
     return (
       <div className="App">
-      <div className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </div>
-      <div>
-     
-      {
-        글제목.map(function (글,i) {
-          return(
-            <div className="list" key={i}>
-            <h3>{글}</h3>           
-          </div>
-          ) })
-       }                
-
-        <div className="publish">
-
-          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-   
-          <button onClick={ ()=>{ 글제목변경(  [입력값,'남자코트추천', '강남우동맛집', '파이썬독학'] ) }  }>저장</button>
-        </div>
-
-        <div className="publish">
-              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>   
-          <button onClick={ ()=>{
-     
-            글제목.unshift(입력값);
-            글제목변경( 글제목 ) }}>저장</button>
-        </div>
-
-        <div className="publish">
-          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-            <button onClick={ ()=>{
-  
-            var arrayCopy = [...글제목]
-            arrayCopy.unshift(입력값);
-            글제목변경( arrayCopy ) }}>저장</button>
-                  </div>
-      </div>
-
-   
+        <div className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </div>
+                 
+        // (1-2)
+        <Profile/>
       </div>
     )
+  }
+
+// (1) (2)
+  class Profile extends React.Component{
+    constructor(){
+      // (3)
+      super();
+      this.state ={ name: 'Kim', age : 30}
+    }
+
+    // (5)
+    changeName(){
+      this.setState( {name:'function Park'} )
+    }
+
+    // (5-3)
+    changeName2 = ()=>{
+      this.setState( {name:'function Park'} )
+    }
+
+    render(){
+      return( <div>
+        <h3>프로필입니다.</h3>
+        // (3-2)
+        <p>저는 {this.state.name}입니다.</p>
+        // (4)
+        <button onClick={ ()=>{ this.setState({name:'park'})  } }>state변경</button>
+        // (5)
+        <button onClick={ this.changeName}>state변경 error</button>
+        // (5-2)
+        <button onClick={ this.changeName.bind(this)}>state변경 bind(this)</button>
+        // (5-3)
+        <button onClick={ this.changeName2}>state변경 arrow function</button>
+
+        </div>)          
+    }
   }
 
   
