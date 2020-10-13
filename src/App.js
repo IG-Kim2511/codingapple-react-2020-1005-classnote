@@ -726,7 +726,7 @@ function App12() {
     )
   }
 
-  //  14 class를 이용한 옛날 옛적 React 문법
+  // 14 old react 문법 : class를 이용한 옛날React 문법
   // (1)
 // 1. class를 하나 만들고 이름짓습니다.
 // 2. 그리고 React.Component라는 이상한 것을 extends한다고 써줍니다.
@@ -780,7 +780,6 @@ function App12() {
 // 아니면 2. 함수를 아예 arrow function으로 바꿔주시면 됩니다.
 
   function App14 (){
-
     return (
       <div className="App">
         <div className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </div>
