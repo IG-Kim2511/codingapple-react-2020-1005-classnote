@@ -15,6 +15,13 @@ import "./App.css";
 // 설치: npx create-react-app 폴더이름
 // 미리보기:  npm start
 
+// 첫 화면:
+// function App(){
+//   return(
+//       <div> </div>
+//   )
+// }
+
 function App2(){
   return(
       <div>      
