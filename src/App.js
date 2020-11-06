@@ -312,10 +312,10 @@ function App6() {
          // (1)           
         <button onClick={제목바꾸기}>제목바꾸기</button>   
          // (3)
-          <button onClick={제목바꾸기2}>제목바꾸기2</button>
+          <button onClick={제목바꾸기2}>제목바꾸기2 deep copy</button>
 
       <div className="list">
-        <h3>{글state[0]}</h3>
+        <h3>글state:{글state[0]}</h3>
       </div>
              
     </div>
@@ -324,12 +324,17 @@ function App6() {
 
 
 // 🦄 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
-// (1) function App() {},  function Modal(){} 각자 Component
+
+// (1) function App() {},  function Modal(){} 모두 Component
+
 // (2)function, return넣고, <이름/>으로 호출
-// (3)소문자 이름, 한글이름 x
+
+// (3)(첫글자)소문자x, 한글이름 x
+
 // (4)  <>: fragments문법 
 // : div대신에  <> </>으로 감싸는 방법.. 
 // : 왜인지 모르지만 이거쓰면 red color element 가 뜨면서 intellisense가 사용이 안됨. 그래서 나는 안쓰는 걸로...
+
 // (5) 다른component의 변수를 가져와 쓸수없음. props라는 문법을 이용해 state를 <Modal>까지 전해줘야 비로소 사용가능합니다.
 
 function App7() {
