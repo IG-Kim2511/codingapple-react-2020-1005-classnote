@@ -21,7 +21,6 @@ import React, { Profiler, useState } from "react";
 // src: source code 보관함
 // package.json : 설치한 라이브러리 목록
 
-
 // (2)
 // 설치: npx create-react-app 작명folder
 // 미리보기:  npm start
@@ -94,7 +93,7 @@ function App3(){
 
   return(
   <div className="App">
-      <div className="black-nav"> 03 JSX </div>  
+      <p className="black-nav"> 03 JSX </p>  
 
       // (1)
       <h4>{posts} </h4>;
@@ -135,8 +134,8 @@ function App3(){
 // let [state, state변경] = useState(0);  / (영어 state, setState)
 //( state데이터변경함수는 다음 강의에서 )
 
-// (3)state에는 Array, Object 아무거나 다 넣을 수 있습니다
-//  array 사용가능( "문자,숫자,array,object 사용가능")
+// (3)state에는 Array, Object,문자,숫자 모두 사용가능
+//  array 사용 [ ]
 // 1번째 데이터
 
 function App4() {
@@ -147,13 +146,13 @@ function App4() {
   let [문자, 문자변경함수] = useState("남자코트");
 
   //(3)
-  let [문자2, 문자변경함수2] = useState(["맛집1", "맛집2"]);
+  let [state, setState] = useState(["state맛집1", "state맛집2"]);
 
   let posts = "변수";
 
   return (
     <div className="App">
-    <div className="black-nav">04 state.중요한 데이터는 변수말고 state로 </div>
+    <p className="black-nav">04 state.중요한 데이터는 변수말고 state로 </p>
  
       <div className="list">
         <h3>{posts}</h3>        
@@ -165,7 +164,7 @@ function App4() {
 
       <div className="list">
    // (3)
-        <h3>{문자2[1]}</h3>
+        <h3>{state[1]}</h3>
       </div>
     </div>
   );
@@ -201,13 +200,13 @@ function App4() {
 // (5) eslint 문법체크 안보이게 하려면... 추가 ↑ 
 
 function App5() {
-  
+
   // (2)-1
   let [state, state변경] = useState(0); 
 
   return (
     <div className="App">
-    <div className="black-nav">05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법</div>
+    <p className="black-nav">05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법</p>
       <div className="list">
         <h3>
         // (1)
@@ -221,79 +220,101 @@ function App5() {
   );
 }
 
-//🦄 06 숙제 해설 : 블로그 글 수정버튼 만들기
-// (1)onClick에 함수넣기
-// 함수에 ()붙이면, 클릭이전에 바로 함수실행됨. 그래서 뺌
+//🦄
+//🦄 06  spread operator : deep copy : 공유없이 독립적인 복사 (블로그 글 수정버튼 만들기)
+// Q : 클릭하면 첫 글제목이 ‘여자코트 추천’ 으로 바뀌는 <button>을 만들어야합니다.
+// state 데이터를 일부만 변경하고 싶을 땐 어떤 식으로 사용하는지 알아봅시다. 
 
-// (2)spread operator : state는 바로 쓰면안되고, 다른변수에 담아서(복사해서) 사용해야함.
-// 0. 글제목이라는 state는 직접 수정할 수 없습니다. 그래서.. 복사본을 만들기로 합니다.
-// 1. 글제목이라는 state의 복사본을 만들어 newArray라는 변수에 저장합니다.
+// (1)) onClick={제목바꾸기}
+// onClick안에 뭘 적을지가 문제입니다. 
+// 일단 onClick 안에는 함수만 들어갈 수 있댔죠? 함수를 만들어 집어넣어봅시다.
+// 만든 함수를 onClick안에 집어넣었습니다.
+// 미리 정의된 함수를 넣으실 때는 소괄호를 넣지 않는게 포인트입니다 
+
+// (2)
+// 글state의 첫째 데이터를 변경할때,  state 변경함수를 꼭 사용하셔야합니다. 
+// 글state만들 때 같이 만든 글state변경() 이라는 함수를 사용하시면 됩니다. 
+// state 변경함수인 글제목변경()을 이용해서 제목바꾸기() 함수를 이렇게 디자인했습니다. 
+
+// (3) 
+//  프로그래머 스타일로 다시만들어보면
+// 0. 글state는 직접 수정할 수 없습니다. 그래서.. 복사본을 만들기로 합니다.
+// 1. 글state의 복사본을 만들어 newArray라는 변수에 저장합니다.
 // 2. newArray의 0번째 데이터를 ‘여자코트 추천’으로 변경합니다.
-// 3. 그리고 그걸 글제목변경() 함수 안에 넣어서 글제목 state를 변경합니다.
+// 3. 그리고 그걸 글state변경() 함수 안에 넣어서 글제목 state를 변경합니다.
 
+// var data1 = [1,2,3];
+// var data2 = data1;
 // 이런 식으로 사용하면 data1에 있던 자료를 data2에 복사한다는 뜻이죠?
 // 근데 data1과 data2는 각각 [1,2,3]을 별개로 저장하는게 아니라
-// data1과 data2는 똑같은 값을 공유합니다.
-// data1을 변경하면 data2도 자동으로 변경되고 그렇습니다. (충격)
+// data1과 data2는 똑같은 값을 공유합니다. data1을 변경하면 data2도 자동으로 변경되고 그렇습니다. (충격)
 // (자세한건 javascript reference data type이라고 검색해봅시다)
 
 // 그래서 결론은 state도 등호 = 를 이용해서 복사하면 문제가 일어나기 때문에
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
+// deep copy하면 서로 독립적임. 
+
 // deep copy는 여러가지 방법이 있는데 가장 쉬운 방법은
 // 그래서 결론은 state도 등호 = 를 이용해서 복사하면 문제가 일어나기 때문에
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // 방법은 var newArray = [...글제목];
 
+// (4)
+// spread operator : ES6 신문법입니다. /  deep copy
+
+// 뜻은 별거없고 중괄호나 대괄호를 벗겨주세요~ 라는 뜻입니다.  
+// …[1,2,3] 이렇게 쓰시면
+// 그 자리에 1,2,3 이 남습니다. 걍 괄호 벗기기용 연산자입니다.
+
+// 근데 두번째 용도도 있는데 array나 object 자료형을 deep copy할 때 많이 사용합니다. 
+
+// var data1 = [1,2,3];
+// var data2 = [...data1]
+// 그냥 data1에 있던 자료들을 괄호 벗긴담에 다시 array로 만들어주세요~ 라는 뜻인데
+
+// array를 이런 식으로 사용하면, 완전 독립적인 array 복사본을 생성해주는 deep copy가 가능합니다. 
+// 앞으로 deep copy 할 때 외워서 많이 쓰시면 되겠습니다.  
+
+// object 자료형도 똑같이 deep copy 복사가능합니다.
+
+// (5)
+// 리액트에서 state를 수정하고 싶으면 보통 이런 패턴으로 코드를 짭니다. 
+// 1. 수정하고 싶은 state의 deep 카피본을 하나 생성합니다. 
+// 2. 카피본을 입맛에 맞게 수정합니다. 
+// 3. 카피본을 state변경함수()에 집어넣습니다. 
+// 이 패턴을 외워두시면 state 변경하는 법 마스터하신겁니다.
+
+
 function App6() {
-  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
-
-  let [state, state변경] = useState(0);
-
-  let [count, setCount] = useState(0);
-
-  let posts = "강남 고기 맛집";
-
-  // (1)
-  // function 제목바꾸기() {
-  //   글제목변경(["여자", "강남", "파이썬"]);
-  // }
-
-  
+  let [글state, 글state변경] = useState(["남자", "강남", "파이썬"]);
+  // (2)
   function 제목바꾸기() {
-    // (2)
-    var newArray = [...글제목];
-    newArray[0] = "여자코트 추천";
-    글제목변경(newArray);
+    글state변경(["여자", "강남", "파이썬"]);
   }
-
+  
+  // (3)
+  function 제목바꾸기2() {
+    // (3)-1.2.3 (4)
+    var newArray = [...글state];
+    newArray[0] = "여자코트 추천";
+    글state변경(newArray);
+  }
   return (
     <div className="App">
-    <div className="black-nav"> 06 숙제 해설 : 블로그 글 수정버튼 만들기</div>
-         // (1) (2)
-       <div>
-          <button onClick={제목바꾸기}>버튼</button>
-       </div>
+    <p className="black-nav">🦄06 spread operator : deep copy : 공유없이 독립적인 복사 (블로그 글 수정버튼 만들기)</p>
+         // (1)           
+        <button onClick={제목바꾸기}>제목바꾸기</button>   
+         // (4) 
+          <button onClick={제목바꾸기2}>제목바꾸기2</button>
+
       <div className="list">
-        <h3>{글제목[0]}</h3>
-        <p>2월 18일 발행</p>
+        <h3>{글state[0]}</h3>
       </div>
-      <div className="list">
-        <h3>{글제목[1]}</h3>
-        <p>2월 19일 발행</p>      
-      </div>
-      
-      <div className="list">
-        <div>
-        <h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3>
-          <p>You clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-        <p>2월 17일 발행</p>
-      </div>
-   
+             
     </div>
   );
 }
+
 
 // 🦄 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
 // (1) function App() {},  function Modal(){} 각자 Component
@@ -307,7 +328,7 @@ function App6() {
 function App7() {
   return (
    <div className="App">
-    <div className="black-nav">07 Component : </div>
+    <p className="black-nav">07 Component : </p>
 
     // (1) (2)
     <Modal></Modal>
@@ -366,7 +387,7 @@ let [modal,modal변경]=useState(false);
 
   return (
    <div className="App">
-    <div className="black-nav">08 클릭하면 동작하는 UI (모달창) 만드는 법 </div>
+    <p className="black-nav">08 클릭하면 동작하는 UI (모달창) 만드는 법 </p>
 
   //  (1) (2) (3)
     { 
@@ -452,7 +473,7 @@ function App9() {
 
   return (
    <div className="App">
-    <div className="black-nav"> 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때 </div>
+    <p className="black-nav"> 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때 </p>
 
     // (2) (2-1)
     {
@@ -530,7 +551,7 @@ let [state, state변경] = useState(["남자", "강남", "파이썬"]);
 
   return (
    <div className="App">
-    <div className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </div>
+    <p className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </p>
     // (1) (1-2)
     <Modal3 mynaming={state}></Modal3>
    </div>
@@ -577,7 +598,7 @@ let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   return (
    <div className="App">
-    <div className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </div>
+    <p className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </p>
 
     // (1) (1-4)
       <button onClick={ ()=>{ clicked제목변경(0) } }>button1</button>
@@ -654,7 +675,7 @@ function App12() {
       
     return (
      <div className="App">
-      <div className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </div>
+      <p className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </p>
   
       // (1) (2-2)
       <input type="text" onChange={ ()=>{ console.log('안녕') } }/>
@@ -706,7 +727,7 @@ function App12() {
 
     return (
       <div className="App">
-      <div className="black-nav"> 13 input 다루기 2 : 블로그 글발행 기능 만들기 </div>
+      <p className="black-nav"> 13 input 다루기 2 : 블로그 글발행 기능 만들기 </p>
       <div>
      
       {
@@ -805,7 +826,7 @@ function App12() {
   function App14 (){
     return (
       <div className="App">
-        <div className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </div>
+        <p className="black-nav"> 14 class를 이용한 옛날 옛적 React 문법 </p>
                  
         // (1-2)
         <Profile/>
