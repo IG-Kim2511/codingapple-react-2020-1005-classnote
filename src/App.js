@@ -432,71 +432,111 @@ function Modal2(){
   )
 }
 
-//🦄 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때
-  // (1) .map( )
-  // 이름.map(콜백함수);
-  // a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
-  // [4,6,8]이 return됨
-  // 보통 변수에 담아서 사용
-  // console.log([뉴어레이]);  확인해보면 -> [ 4.6.8] 출력됨 
+//🦄 09 .map( ): 많은 HTML들을 반복문으로 만들 때
+// for, for in , for of
 
-// (2) { }데이터바인딩 잊지말기
+// 리액트환경에선 for 반복문을 이용해 HTML을 줄일 수도 있습니다. 
+
+// (1) .map( )
+// 이름.map(콜백함수);
+// a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
+// [4,6,8]이 return됨
+// 보통 변수에 담아서 사용
+// console.log([뉴어레이]);  확인해보면 -> [ 4.6.8] 출력됨 
+
+// array 안의 모든 자료에 똑같은 작업을 하나씩 시켜주고 싶을 때가 가끔 있습니다. 
+// 그럴 때 쓰는 문법이 바로 map 이라는 내장 함수입니다. 
+// 위처럼 모든 array에 붙일 수 있으며 소괄호 안에 콜백함수 하나 넣는게 기본입니다.
+// 그러면 map 안의 코드가 어레이 자료의 갯수만큼 실행됩니다. 
+// 3번 실행되겠네요. 
+
+// 어레이안의 자료에 전부 10을 곱해주고 싶으면 이렇게 작성합니다. 
+// 콜백함수 소괄호 안에 파라미터를 아무이름이나 입력해주시면 (저는 a로 입력)
+// 이 a라는 파라미터는 어레이 안에 있던 모든 자료를 하나씩 출력해주는 역할입니다. 
+// 그리고 a에 10을 곱하든 20을 곱하든 원하는 작업을 하나 시켜주시면 됩니다. 
+// 그럼 어레이에 있던 모든 자료가 10씩 곱해져셔 [20, 30, 40] 이 됩니다.  
+
+// 근데 참고로 map 함수는 ,보통 새로운 변수에 담아서 사용합니다. 
+// 위처럼 작성하면 newArray에는 [20,30,40]이 담겨져있습니다. 
+// 원래 어레이에는 [2,3,4]가 담겨져있고요. 
+
+
+// (2) map( ) 함수 쓰는 법 
+//  { }  
+// 이름.map( ()=>{ })   : 이름에 변수, state, array[], function 들어감
+// return ( <div></div>)
+// ; 안쓰게 조심
+
 // (2-1)글제목state의 array갯수만큼 반복
+
 // (2-2)arrow function 가능
+
 // (2-3) [ ]안의 array갯수만큼 가능
 
 // (3)반복할 html 추가
 // (3-2) return ( )추가
 
-// (4) (4-2) 글(parameter)는 array'글제목'안에 있던 하나하나의 데이터 
+// (4) 반복된 HTML에 각각 다른 제목을 부여하고 싶다면
+// (4-2) parameter(param작명)는 array'글제목'안에 있던 하나하나의 데이터 
+
+// param작명 파라미터는 map이 반복될 때마다 어레이 안에 있던 하나하나의 데이터들을 의미한다고 했습니다. 
+// 그니까 param작명은 map 안의 코드가 3번 반복될 때
+// 차례로 ‘남자’ ‘강남’ 이런 데이터들이 된다는 소리입니다.
 
 // (5) onClick적용가능? ㅇ
 
-// (6) for 반복문
-// 빈 array[]
-// 3번 반복
-// push로 html넣음
-// return
-// (6-2) js에서는 이렇게 실행, 리엑트에서는 jsx안으로 이동+ 데이터바인딩 { }
+// (6) for 반복문을 쓰고싶다면 ... Data binding하기
+// ( 함수만들기 귀찮으니 코딩꼰대가 아니라면 그냥 map을 쓰도록 합시다. )
+
+// 그냥 따로 함수를 만들어서 쓰셔야합니다.
+// 1. 따로 일반 함수를 만들고 
+// 2. 함수안에 HTML을 담을 빈 array[]를 하나 생성합니다. 
+// 3. 함수안에서 for 반복문을 이용해 array내에 HTML을 추가해줍니다.
+// 4. 완성된 array를 return 해줍니다. 
+// 5. 그리고 함수를 원하는 곳에 { 함수명() } 데이터바인딩 해주시면 됩니다. 
+
+// (7) js에서는 이렇게 실행, 리엑트에서는 jsx안으로 이동+ 데이터바인딩 { }
 
 function App9() {  
 
-// (1)예시 설명
+// (1) 예시 설명
   var 어레이 =[2,3,4];
-  var 뉴어레이 = 어레이.map(function(a){ return a*2 })
+  var 뉴어레이 = 어레이.map(function(a){ return a*10 })
   console.log([뉴어레이]);
   
 // (2)
-  let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+  let [글state, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   // (5)
   let [state, state변경] = useState(0);
 
-  // (6) for 반복문
-
+  // (6)-1
   function for반복문함수(){    
+    // (6)-2
     var 어레이 = [];
     for (let i = 0; i < 3; i++) {
-     어레이.push(<div>for반복문함수</div>);  }
+     어레이.push(<div>for반복문함수html</div>);  }
     return 어레이
   }
-// (6-2)
+
+// (7)
   //  for반복문함수();
 
   return (
    <div className="App">
-    <p className="black-nav"> 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때 </p>
+    <p className="black-nav">🦄09 .map( ): 많은 HTML들을 반복문으로 만들 때 </p>
 
     // (2) (2-1)
     {
-      글제목.map(function(){
-        return <div>글제목</div>
+      글state.map(function(){
+        return <div>map</div>
       })
     }
+    
     // (2-2)  
     {
-      글제목.map(()=>{
-        return <div>글제목</div>
+      글state.map(()=>{
+        return <div>map</div>
       })
     }
 
@@ -506,23 +546,24 @@ function App9() {
         return <div>2번 반복</div>
       })
     }
+
     // (3) (3-2)
     {
-      글제목.map(function () {
+      글state.map(function () {
         return(
           <div className="list">
-          <h3>{글제목[0]}</h3>
+          <h3>{글state[0]}</h3>
          </div>
         ) })
      }
 
     //   (1) (4)
     {
-      글제목.map(function (글) {
+      글state.map(function (param작명) {
         return(
           <div className="list">
           // (4-2)
-          <h3>{글}</h3>
+          <h3>  반복된 HTML에 각각 다른 제목을 부여하고 싶다면 : {param작명}</h3>
          
         </div>
         ) })
@@ -530,17 +571,16 @@ function App9() {
 
     //  (5)
     {
-      글제목.map(function (a) {
+      글state.map(function (a) {
         return(
           <div className="list">
-          <h3>{a} <h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3> </h3>
+          <h3>{a} <h3> <button onClick={ ()=>{ state변경 (state+1)}}> onClick </button> state: {state} </h3> </h3>
            </div>
         ) })
      }
 
-    //  (6)
+    //  (6)-5
     {for반복문함수()}
-
    </div>
   );
 }
