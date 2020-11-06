@@ -1,19 +1,29 @@
-// 05 eslint 문법체크 안보이게 하려면... 추가
+// 05 -(5)
 /*eslint-disable */
-
-// 04 useState : 리액트 내장함수 state 쓰겠다는 뜻
-import React, { Profiler, useState } from "react";
-
-// 03-(3) 이미지 넣기 : 다른폴더에서 import해온 후, 이름지어주고, 그이름을 { }에 넣어서 사용
-import logo from "./logo.svg";
 
 import "./App.css";
 
+// 03-(3)-1 
+import logo from "./logo.svg";
+// 04-(2)
+import React, { Profiler, useState } from "react";
 
+
+//🦄
 //🦄 01 소개 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
 
+//🦄
 //🦄 02 리액트 React 설치
-// 설치: npx create-react-app 폴더이름
+//(1) →캡쳐확인
+// node.js설치
+// node_modules폴더 : 설치한 라이브러리 모은 폴더
+// public : static파일 보관함. 나중에 build압축할때, public안의 폴더는 바뀌지않고 남음
+// src: source code 보관함
+// package.json : 설치한 라이브러리 목록
+
+
+// (2)
+// 설치: npx create-react-app 작명folder
 // 미리보기:  npm start
 
 // 첫 화면:
@@ -43,19 +53,28 @@ function App2(){
   )
 }
 
+//🦄
 //🦄 03 JSX를 이용해 HTML 페이지 제작
 // 여기 쓰는 것은 html이 아닌 JSX. html과 거의 똑같음. 다만 react.jsx도 js이므로, js와 겹치는 문법은 쓸 수 없음. 보통 { }로 대체해서 씀
 // class -> className  (js문법 class와 겹침)
 // App.css에서 css코딩
+
 // (1)데이터 바인딩 (Data binding) : { }
+
 // (2) 함수이름으로 사용가능
-// (3) 이미지 넣기
+
+// (3)-1 이미지 넣기↑
+// 이미지 넣기 : 다른폴더에서 import해온 후, 이름지어주고 
+// : import logo from "./logo.svg";
+
+// (3)-2 그 이름을 { }에 넣어서 사용
+
 // (4) 클래스 이름으로도 사용가능
 
 // (5-1) style 넣기 :  그냥 css에 따로 코딩하는게 간편함
 
 // (5-2) 오브젝트 형식 { ' ' },과 데이터바인딩 { } 사용. style={{color:'blue'}}
-// , '' 넣는것 조심
+// , '' 빠뜨리지않게 주의
 // font-size --> fontSize (js문법과 겹침)
 
 // (5-3)style을 따로 변수에 넣고 데이터바인딩{ }사용..가능함
@@ -81,7 +100,7 @@ function App3(){
       <h4>{posts} </h4>;
       // (2)
       <h4>(함수())</h4>
-      // (3)
+      // (3)-2
       <img src={ logo } alt="" className='img1'/>
 
       // (4)
@@ -92,25 +111,39 @@ function App3(){
   )
 }
 
-//🦄 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
+//🦄
+//🦄 04 state.중요한 데이터는 변수말고 state로 
 // 데이터는 variable(변수) or state에 넣을수있음
 
 // (1)ES6 destructuring 문법 : array,object 를 variable함
+// 왼쪽 오른쪽 형식을 똑같이 맞춰주시면 자동으로 알아서 변수가 생성됩니다.
 // a=10, b=100
 
-//(2) useState('남자코트');
-// useState 를 es6 destructuring문법으로 바꿈
-// let [state, state변경] = useState(0);
-// state데이터변경함수는 나중에
+// (2)
+// useState()라는 함수는 state를 하나 만들어주는 함수입니다.
+// (2)-2
+// (이걸 이용하기 위해 위에 import {useState} 어쩌구를 추가했습니다.)
+// useState( 저장할 데이터 ) 이렇게 사용하시면 state에 데이터를 저장하실 수 있습니다.
 
-// (3) array 사용가능( "문자,숫자,array,object 사용가능")
+// 근데 useState()를 쓰면 데이터가 두개 남습니다. [데이터1, 데이터2] 이렇게 생긴 이상한 array가 남습니다.
+// 이걸 각각 a와 b라는 변수명으로 ES6 destructuring 문법을 이용해 저장해서 쓰시면 됩니다.
+// a라는 변수엔 실제 저장할 데이터가 들어있고
+// b라는 변수엔 저장할 데이터를 변경시킬 함수가 들어있습니다.
+
+// (2)-3
+// useState 를 es6 destructuring문법으로 바꿈
+// let [state, state변경] = useState(0);  / (영어 state, setState)
+//( state데이터변경함수는 다음 강의에서 )
+
+// (3)state에는 Array, Object 아무거나 다 넣을 수 있습니다
+//  array 사용가능( "문자,숫자,array,object 사용가능")
 // 1번째 데이터
 
 function App4() {
   // (1)
   var [a, b] = [10, 100];
 
-  // (2)
+  // (2)-3
   let [문자, 문자변경함수] = useState("남자코트");
 
   //(3)
@@ -120,101 +153,71 @@ function App4() {
 
   return (
     <div className="App">
-    <div className="black-nav">04 state: 중요한 데이터는 변수말고 state로 만들랬죠</div>
+    <div className="black-nav">04 state.중요한 데이터는 변수말고 state로 </div>
  
       <div className="list">
-        <h3>{posts}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
+        <h3>{posts}</h3>        
       </div>
+
       <div className="list">
-        <h3>{문자}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
+        <h3>{문자}</h3>        
       </div>
+
       <div className="list">
-      // (3)
+   // (3)
         <h3>{문자2[1]}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
       </div>
     </div>
   );
 }
 
+//🦄 
 //🦄 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
 
-// (1) span 클릭할때마다 숫자 오르기
-// ( JS문법  onclick = "1+1" )
-// react문법  onClick = { ()=>{1+1} }
+// Q: 버튼 클릭할때마다 , 숫자 오르기
+
+// (1) button, onClick, console.log확인
+// onClick
+// react문법  onClick = { ()=>{1+1} }  //  ( JS문법  onclick = "1+1" )
 //  { } , 함수를 사용해야함.
 
-// (2) (3) state : 문자. state function : 문자 변경하는 함수
+// (2)-1
+// state : state문자. 
+// state function (State변겅) : state문자 변경하는 함수
+// (영어) let [count, setCount]
 
-// state변경(); 함수를 가져다 쓸수있음
-// state변경(1);      ---> count(0)이 1로 바뀜
-// state변경(가나다);---> count(0)이 '가나다'로 바뀜
+// state변경이라고 만들어놓은 변수가 바로 state를 변경하기 위한 함수입니다. 
+// state변경(1) 이라고 사용하시면 state가 1로 변경됩니다.
+// state변경(100) 이라고 사용하시면  state가 100으로 변경됩니다. 
 
-// 그냥쓰면 재랜더링이 무한반복됨
+// 0 : defalut로 기본값 지정
+
+// (2)-2  버튼클릭하면 숫자가 올라감
+// state+1을 state변경 함수에 넣음
+// 그럼 버튼을 누를 때 마다 state값이 바뀜
+// 숫자표시에 {state} 데이터 바인딩...화면에 보여줌
+
+
+// (5) eslint 문법체크 안보이게 하려면... 추가 ↑ 
 
 function App5() {
-  let [문자, 문자변경함수] = useState(["남자", "강남", "파이썬"]);
-
-  // (2)
-  let [state, state변경] = useState(0);
-
-  // (3)
-  let [count, setCount] = useState(0);
-
-  let posts = "강남 고기 맛집";
+  
+  // (2)-1
+  let [state, state변경] = useState(0); 
 
   return (
     <div className="App">
     <div className="black-nav">05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법</div>
       <div className="list">
+        <h3>
         // (1)
-        <h3>
-          {문자[0]}{" "}
-          <button
-            onClick={() => {
-              console.log(1);
-            }}
-          >
-            👍
-          </button>
-          0{" "}
-        </h3>
-        // (2)
-        <h3>
-          {" "}
-          {문자[0]}{" "}
-          <button
-            onClick={() => {
-              state변경(state + 1);
-            }}
-          >
-            👍
-          </button>{" "}
-          {state}
-        </h3>
-        
-<h3> <button onClick={ ()=>{ state변경 (  state  + 1) }}> 👍</button> {state} </h3>
-        // (3)
-        <div>
-          <p>You clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-        <p>2월 17일 발행</p>
+         <button onClick={() => { console.log(1); }}> console.log </button>
+        //  (2)-2
+         <button onClick={() => { state변경(state + 1); }}> +1 </button>
+        <p> 숫자표시: {state}</p>
+       </h3>
       </div>
-      <div className="list">
-        <h3>{문자[1]}</h3>
-        <p>2월 18일 발행</p>
-      </div>
-      <div className="list">
-        <h3>{문자[2]}</h3>
-        <p>2월 19일 발행</p>
-      </div>
-    </div>
+     </div>
   );
 }
 
