@@ -614,25 +614,48 @@ function Modal0(props){
   )
 }
 
-//🦄 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기
-// (1)버튼 누를때 modal창이 바뀌게
+//🦄 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 / map(a,i)
+// Q: 사이트 내에 만든 <h3> 글제목들을 누르면 모달창이 열리는데 
+// 0번째 <h3>를 누르면 0번째 글제목이 모달창 안에 떠야합니다.
+// 1번째 <h3>를 누르면 1번째 글제목이 모달창 안에 떠야합니다.
+// 그냥 모달창 안에 상세페이지 같은걸 만들어보자는 겁니다. 
+
+// 예전에 UI 만들 때 어떻게 만들었습니까?
+// 1. 모달창이 현재 보이는/보이지않는 상태정보를 state로 저장해놓고
+// 2. state가 true일 때 모달창 보여주라고 if문 썼었고
+// 3. state가 false일 때 모달창 숨기라고 if문 썼었습니다. 
+
+// (0)
+// 지금 만드는 패턴은????
+// 1. 지금 0,1,2번째 중 몇번째 제목을 눌렀는지 상태정보를 state로 저장해놓고
+// 2. state가 0일 때는 0번째 제목을 저기 출력해주고
+// 3. state가 1일 때는 1번째 제목을 저기 출력해주고 
+
+// (1)  버튼 누를때 modal창이 바뀌게
 // (1-2)변수.. state로 만듬. 기본값 0
 // (1-3) propsclicked제목 만들어서 props글제목[ ] 안에 넣음
-// (1-4) clicked제목변경을 0,1,2 으로 바꾸면 완성 ( -> props글제목[0] props글제목[1] props글제목[2] )
+// (1-4) clicked제목변경을 0,1,2 으로 바꾸면 , props글제목(0~2)로 바뀌면서 완성 (props글제목[0] props글제목[1] props글제목[2] )
 
-// (2) button 누를때, modal창이 바뀌게
-// map()
+// (2) 0을 하드코딩하지말고 프로그래밍하기. clicked제목변경...반복문돌때마다 차례로 0,1,2 되게 하기
+// button click할때마다 0,1,2 바뀜
 // map 반복문을 쓸 때 i라는 파라미터를 뒤에 추가해주시면 됩니다. 
-// 두번째 파라미터는 바로 반복문이 돌면서 0,1,2,3 … 이렇게 하나씩 증가하는 정수를 뜻합니다.
-// 전문 개발용어로 enumerate한다 라고 하는데 그건 알필요가 없고
-// 그냥 i 저렇게 써주시면 0,1,2,3,4… 이런 변수입니다. 
 
+// map() 
+// 1. { }
+// 2. array.map( ( a, i )=>{ } )
+
+// a: array,state... 안의 각기 데이터 
+// i: i는 반복문이 돌면서 0,1,2,3 … 이렇게 하나씩 증가하는 정수를 뜻합니다.
+// i 써주시면 0,1,2,3,4… 이런 변수입니다. (영어로 : enumerate한다)
+
+// 3. return( <div> </div>)
+// 4. button. onClick={()=>{ }}
+
+// 5.clicked제목변경(i)
+// 6. {a}
 
 function App11() {
-
-
-
-// (1-2)
+// (0) (1-2)
 let[clicked제목,clicked제목변경]=  useState(0);
 // (1-3)
 let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
@@ -646,16 +669,15 @@ let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
       <button onClick={ ()=>{ clicked제목변경(1) } }>button2</button>
       <button onClick={ ()=>{ clicked제목변경(2) } }>button3</button>
 
-
     // (1-3)
-      <Modal4 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal4>
+      <Modal11 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal11>
     
-    // (2)
+    //(2) (2)-1.2.3.4  map() 
     {
-      글제목.map(function (글,i) {
+      글제목.map( (a,i) => {
         return(
-          <div className="list">
-          <button onClick={ ()=>{ clicked제목변경(i) } } >{글}  </button>
+          <div >
+          <button onClick={ ()=>{ clicked제목변경(i) }}> {a}  </button>
           </div>
         ) })
      }
@@ -663,21 +685,14 @@ let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
   );
 }
 
-
-function Modal4(props){
+function Modal11(props){
   return(
-    <div>
-      <div className='modal'>
+   <div className='modal'>
       // (1-3)
-          <h2>title {props.props글제목[props.propsclicked제목] } </h2>
-          <p>date</p>
-          <p>date</p>
-      </div>
-      <div></div>
-    </div>
+          <h2>모달창: {props.props글제목[props.propsclicked제목] } </h2>
+   </div>
   )
 }
-
 
 //🦄 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
 // Q: input입력한 값 
