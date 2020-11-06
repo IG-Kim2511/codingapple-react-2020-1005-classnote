@@ -366,22 +366,25 @@ function Modal(){
   )
 }
 
-//🦄 08 클릭하면 동작하는 UI (모달창) 만드는 법 .  Conditional rendering
-// 바닐라js: sytle="displa:none"/"block".....
+//🦄 08 클릭하면 동작하는 UI (모달창) 만드는 법. react에서 if문법: Conditional rendering
+// → 37강 참고
 
-// (1)Component 선언 (<modal2></modal2>) 아무곳에 넣을수있음
+// (0) Q: 클릭하면 등장하는 간단한 UI는 어떻게 만드는지 알아봅시다. 
+// 쌩 자바스크립트에선 display : block 이런 스타일을 조정해서 보여주고 안보여줌
 
-// (2)react에서 if문법: Conditional rendering (조건연산자,삼항연산자) : 
-//
-// { } 리액트 문법 + Conditional Expressions 사용.
+// 1. UI(따로 만든 Modal Component)가 보이는/보이지않는 상태정보를 state로 만들어둠 (보통 true/false 사용함)
+// 2. if문을 사용해서  state가 true일 때만 UI를 보여줌
+// 3.그럼 이제 열기버튼을 클릭시 UI가 보입니다.
 
-//   if(1 < 3 ){
-//     <Modal2></Modal2>
-//   }else{
-//     <div></div>
-//   }
+// (1) react에서 if문법: Conditional rendering (조건연산자,삼항연산자) : 
+// { }
+// if ()조건문 : === , > , <....etc
+// ?
+// :null
 
-//(3) null : 텅빈 html이라는 뜻, 
+// (2) Component 선언 (<modal2></modal2>) 아무곳에 넣을수있음
+
+// (3) null : 텅빈 html이라는 뜻, 
 // 스위치끌때는 텅빈 화면만 나오게 설정
 // ( 리액트에서 텅빈 HTML을 의미하는 코드는 null이라는 자료형입니다.)
 
@@ -398,18 +401,20 @@ function App8() {
 let [modal,modal변경]=useState(false);
 
   return (
-   <div className="App">
-    <p className="black-nav">08 클릭하면 동작하는 UI (모달창) 만드는 법 </p>
+   <div >
+    <p className="black-nav">🦄08 클릭하면 동작하는 UI (모달창) 만드는 법. react에서 if문법: Conditional rendering</p>
 
-  //  (1) (2) (3)
+  //  (0)-2 . (1) 
     { 
       modal === true
+      // (2)
       ? <Modal2></Modal2>
+      // (3)
       : null
    }
 
    <br/>
-  //  (4)
+  // (0)-3.  (4)
    <button onClick={()=>{modal변경(true)}}>modal2열기 button</button>  <br/>
  
   // (5)
@@ -418,17 +423,12 @@ let [modal,modal변경]=useState(false);
   );
 }
 
+// (0)-1
 function Modal2(){
   return(
-    <div>
-     <div className='modal'>
-        <h2>title</h2>
-        <p>date</p>
-        <p>date</p>
-      
-      </div>
-      <div></div>
-    </div>
+       <div className='modal'>
+        <h2>Modal component</h2>     
+      </div>   
   )
 }
 
