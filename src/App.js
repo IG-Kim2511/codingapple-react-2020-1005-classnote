@@ -372,9 +372,9 @@ function Modal(){
 // (0) Q: 클릭하면 등장하는 간단한 UI는 어떻게 만드는지 알아봅시다. 
 // 쌩 자바스크립트에선 display : block 이런 스타일을 조정해서 보여주고 안보여줌
 
-// 1. UI(따로 만든 Modal Component)가 보이는/보이지않는 상태정보를 state로 만들어둠 (보통 true/false 사용함)
+// 1. UI(따로 만든 child Component (Modal Component))가 보이는/보이지않는 상태정보를 state로 만들어둠 (보통 true/false 사용함)
 // 2. if문을 사용해서  state가 true일 때만 UI를 보여줌
-// 3.그럼 이제 열기버튼을 클릭시 UI가 보입니다.
+// 3. 그럼 이제 열기버튼을 클릭시 UI가 보입니다.
 
 // (1) react에서 if문법: Conditional rendering (조건연산자,삼항연산자) : 
 // { }
@@ -495,8 +495,6 @@ function Modal2(){
 // 4. 완성된 array를 return 해줍니다. 
 // 5. 그리고 함수를 원하는 곳에 { 함수명() } 데이터바인딩 해주시면 됩니다. 
 
-// (7) js에서는 이렇게 실행, 리엑트에서는 jsx안으로 이동+ 데이터바인딩 { }
-
 function App9() {  
 
 // (1) 예시 설명
@@ -519,9 +517,6 @@ function App9() {
     return 어레이
   }
 
-// (7)
-  //  for반복문함수();
-
   return (
    <div className="App">
     <p className="black-nav">🦄09 .map( ): 많은 HTML들을 반복문으로 만들 때 </p>
@@ -532,7 +527,7 @@ function App9() {
         return <div>map</div>
       })
     }
-    
+
     // (2-2)  
     {
       글state.map(()=>{
@@ -585,43 +580,37 @@ function App9() {
   );
 }
 
-//🦄 10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다
+//🦄 10 props : child Component가 parent Component의 state가져다 쓰기 (자식이 부모의 state를 가져다 쓰고 싶을 땐 말하고 쓰셔야합니다)
 // parent Component , child Component
 // (1) <자식컴포넌트 전송할이름={state명}> 이렇게 사용해주신 후
-// (1-2) =의미 : 글제목state를 { }데이터바인딩해서 mynaming에 집어넣음
+// (1-2) =의미 : state를 { }데이터바인딩해서 props작명 집어넣음
+// (1-3) <Modal props작명=”강남우동맛집”> 이렇게 일반 텍스트를 전송하고 싶으면 따옴표 써도 됩니다.
 
 // (2) 자식컴포넌트 선언하는 function 안에 파라미터 props 를 하나 만들어주시면 됩니다. 
 // (2-2) Props 파라미터 : 부모에게 전달받은 props가 들어감
 // (2-3) props 이름 마음대로 정할수있음. 그냥 관습적으로 props사용
-// (2-4) props.mynaming[1] 1번째 array사용 : "강남"
+// (2-4) props.props작명[1] 1번째 array사용 : "강남"
 
 function App10() {
   // (4)
-
 let [state, state변경] = useState(["남자", "강남", "파이썬"]);
-
 
   return (
    <div className="App">
-    <p className="black-nav">10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다 </p>
-    // (1) (1-2)
-    <Modal3 mynaming={state}></Modal3>
+    <p className="black-nav">🦄10 props : child Component가 parent Component의 state가져다 쓰기 (자식이 부모의 state를 가져다 쓰고 싶을 땐 말하고 쓰셔야합니다)</p>
+    // (1) (1-2) (1-3)
+    <Modal0 props작명={state}></Modal0>
    </div>
   );
 }
 
 // (2) (2-2)
-function Modal3(props){
-  return(
-    <div>
+function Modal0(props){
+  return( 
      <div className='modal'>
-     // (2) (2-4)
-        <h2>title {props.mynaming[1]}</h2>
-        <p>date</p>
-        <p>date</p>
+     // (2-4)
+        <h2>props : {props.props작명[1]}</h2>        
      </div>
-      <div></div>
-    </div>
   )
 }
 
