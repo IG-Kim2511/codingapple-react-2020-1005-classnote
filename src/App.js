@@ -171,7 +171,7 @@ function App4() {
 }
 
 //🦄 
-//🦄 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
+//🦄 05 state변경하는 법((좋아요버튼 만들기) 버튼에 기능개발을 해보자)
 
 // Q: 버튼 클릭할때마다 , 숫자 오르기
 
@@ -206,7 +206,7 @@ function App5() {
 
   return (
     <div className="App">
-    <p className="black-nav">05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법</p>
+    <p className="black-nav">🦄05 state변경하는 법((좋아요버튼 만들기) 버튼에 기능개발을 해보자)</p>
       <div className="list">
         <h3>
         // (1)
@@ -225,7 +225,7 @@ function App5() {
 // Q : 클릭하면 첫 글제목이 ‘여자코트 추천’ 으로 바뀌는 <button>을 만들어야합니다.
 // state 데이터를 일부만 변경하고 싶을 땐 어떤 식으로 사용하는지 알아봅시다. 
 
-// (1)) onClick={제목바꾸기}
+// (1) onClick={제목바꾸기}
 // onClick안에 뭘 적을지가 문제입니다. 
 // 일단 onClick 안에는 함수만 들어갈 수 있댔죠? 함수를 만들어 집어넣어봅시다.
 // 만든 함수를 onClick안에 집어넣었습니다.
@@ -238,10 +238,15 @@ function App5() {
 
 // (3) 
 //  프로그래머 스타일로 다시만들어보면
-// 0. 글state는 직접 수정할 수 없습니다. 그래서.. 복사본을 만들기로 합니다.
+// 0. 글state는 직접 수정할 수 없습니다. 그래서 [...] deep copy를 만들기로 합니다.
 // 1. 글state의 복사본을 만들어 newArray라는 변수에 저장합니다.
 // 2. newArray의 0번째 데이터를 ‘여자코트 추천’으로 변경합니다.
 // 3. 그리고 그걸 글state변경() 함수 안에 넣어서 글제목 state를 변경합니다.
+
+
+// (4) (3)-1  spread operator : ES6 신문법입니다. /  deep copy
+
+// 1. var newArray = 글state; 동작하지않음
 
 // var data1 = [1,2,3];
 // var data2 = data1;
@@ -254,13 +259,11 @@ function App5() {
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // deep copy하면 서로 독립적임. 
 
+// 2.
 // deep copy는 여러가지 방법이 있는데 가장 쉬운 방법은
 // 그래서 결론은 state도 등호 = 를 이용해서 복사하면 문제가 일어나기 때문에
 // 완전히 개별 복사본을 만들어주는 deep copy 식으로 카피하셔야합니다.
 // 방법은 var newArray = [...글제목];
-
-// (4)
-// spread operator : ES6 신문법입니다. /  deep copy
 
 // 뜻은 별거없고 중괄호나 대괄호를 벗겨주세요~ 라는 뜻입니다.  
 // …[1,2,3] 이렇게 쓰시면
@@ -268,6 +271,7 @@ function App5() {
 
 // 근데 두번째 용도도 있는데 array나 object 자료형을 deep copy할 때 많이 사용합니다. 
 
+// 3.
 // var data1 = [1,2,3];
 // var data2 = [...data1]
 // 그냥 data1에 있던 자료들을 괄호 벗긴담에 다시 array로 만들어주세요~ 라는 뜻인데
@@ -294,6 +298,9 @@ function App6() {
   
   // (3)
   function 제목바꾸기2() {
+    // (4)-1
+    // var newArray = 글state;
+
     // (3)-1.2.3 (4)
     var newArray = [...글state];
     newArray[0] = "여자코트 추천";
@@ -304,7 +311,7 @@ function App6() {
     <p className="black-nav">🦄06 spread operator : deep copy : 공유없이 독립적인 복사 (블로그 글 수정버튼 만들기)</p>
          // (1)           
         <button onClick={제목바꾸기}>제목바꾸기</button>   
-         // (4) 
+         // (3)
           <button onClick={제목바꾸기2}>제목바꾸기2</button>
 
       <div className="list">
