@@ -9,9 +9,10 @@ import logo from "./logo.svg";
 
 import "./App.css";
 
-// 01 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
 
-// 02 리액트 React 설치
+//🦄 01 소개 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
+
+//🦄 02 리액트 React 설치
 // 설치: npx create-react-app 폴더이름
 // 미리보기:  npm start
 
@@ -24,18 +25,29 @@ import "./App.css";
 
 function App2(){
   return(
-      <div>      
-          설치: npx create-react-app 폴더이름 <br/>
-          미리보기:  npm start
-      </div>
+    <header className="App-header">
+    <img src={logo} className="App-logo" alt="logo" />
+    <p>
+      Edit <code>src/App.js</code> and save to reload.
+      IG Kim
+    </p>
+    <a
+      className="App-link"
+      href="https://reactjs.org"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Learn React
+    </a>
+  </header>
   )
 }
 
-// 03 JSX를 이용해 HTML 페이지 제작
+//🦄 03 JSX를 이용해 HTML 페이지 제작
 // 여기 쓰는 것은 html이 아닌 JSX. html과 거의 똑같음. 다만 react.jsx도 js이므로, js와 겹치는 문법은 쓸 수 없음. 보통 { }로 대체해서 씀
 // class -> className  (js문법 class와 겹침)
 // App.css에서 css코딩
-// (1)데이터 바인딩 { }
+// (1)데이터 바인딩 (Data binding) : { }
 // (2) 함수이름으로 사용가능
 // (3) 이미지 넣기
 // (4) 클래스 이름으로도 사용가능
@@ -80,7 +92,7 @@ function App3(){
   )
 }
 
-// 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
+//🦄 04 state: 중요한 데이터는 변수말고 state로 만들랬죠
 // 데이터는 variable(변수) or state에 넣을수있음
 
 // (1)ES6 destructuring 문법 : array,object 를 variable함
@@ -130,7 +142,7 @@ function App4() {
   );
 }
 
-// 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
+//🦄 05(좋아요버튼 만들기) 버튼에 기능개발을 해보자 & state변경하는 법
 
 // (1) span 클릭할때마다 숫자 오르기
 // ( JS문법  onclick = "1+1" )
@@ -206,7 +218,7 @@ function App5() {
   );
 }
 
-// 06 숙제 해설 : 블로그 글 수정버튼 만들기
+//🦄 06 숙제 해설 : 블로그 글 수정버튼 만들기
 // (1)onClick에 함수넣기
 // 함수에 ()붙이면, 클릭이전에 바로 함수실행됨. 그래서 뺌
 
@@ -280,7 +292,7 @@ function App6() {
   );
 }
 
-// 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
+// 🦄 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
 // (1) function App() {},  function Modal(){} 각자 Component
 // (2)function, return넣고, <이름/>으로 호출
 // (3)소문자 이름, 한글이름 x
@@ -318,12 +330,13 @@ function Modal(){
   )
 }
 
-// 08 클릭하면 동작하는 UI (모달창) 만드는 법
+//🦄 08 클릭하면 동작하는 UI (모달창) 만드는 법 .  Conditional rendering
 // 바닐라js: sytle="displa:none"/"block".....
 
 // (1)Component 선언 (<modal2></modal2>) 아무곳에 넣을수있음
 
-// (2)Conditional Expressions (조건연산자,삼항연산자) : react에서 if문법
+// (2)react에서 if문법: Conditional rendering (조건연산자,삼항연산자) : 
+//
 // { } 리액트 문법 + Conditional Expressions 사용.
 
 //   if(1 < 3 ){
@@ -383,7 +396,7 @@ function Modal2(){
   )
 }
 
-// 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때
+//🦄 09 .map( ): 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때
   // (1) .map( )
   // 이름.map(콜백함수);
   // a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
@@ -496,7 +509,7 @@ function App9() {
   );
 }
 
-// 10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다
+//🦄 10 props : 자식이 부모의 state를 가져다쓰고 싶을 땐 말하고 쓰셔야합니다
 // parent Component , child Component
 // (1) <자식컴포넌트 전송할이름={state명}> 이렇게 사용해주신 후
 // (1-2) =의미 : 글제목state를 { }데이터바인딩해서 mynaming에 집어넣음
@@ -536,7 +549,7 @@ function Modal3(props){
   )
 }
 
-// 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기
+//🦄 11 (UI 제작 패턴) props를 응용한 상세페이지 만들기
 // (1)버튼 누를때 modal창이 바뀌게
 // (1-2)변수.. state로 만듬. 기본값 0
 // (1-3) propsclicked제목 만들어서 props글제목[ ] 안에 넣음
@@ -601,7 +614,7 @@ function Modal4(props){
 }
 
 
-// 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
+//🦄 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
 // Q: input입력한 값 
 // (1) 2가지 방법 사용 가능  <input/> , <input></input>
 
@@ -665,7 +678,7 @@ function App12() {
     );
   }
   
-  // 13 input 다루기 2 : 블로그 글발행 기능 만들기
+//🦄 13 input 다루기 2 : 블로그 글발행 기능 만들기
 // Q: 글 적고 저장버튼을 click 때 글이 하나 추가되게 하기
 
 // (1) onInput : 입력한 글... 입력값state에 저장
@@ -733,8 +746,8 @@ function App12() {
     )
   }
 
-  // 14 old react 문법 : class를 이용한 옛날React 문법
-  // (1)
+//🦄 14 old react 문법 : class를 이용한 옛날React 문법
+// (1)
 // 1. class를 하나 만들고 이름짓습니다.
 // 2. 그리고 React.Component라는 이상한 것을 extends한다고 써줍니다.
 // 3. constructor(){} 함수를 언급해줍니다.
