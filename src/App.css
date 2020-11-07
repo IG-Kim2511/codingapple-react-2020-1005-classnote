@@ -1,3 +1,8 @@
+*{
+  overflow-x: hidden;
+  max-width: 900px;
+}
+
 .App {
   /* text-align: center; */
   font-size: 1rem;
@@ -16,6 +21,7 @@
 }
 
 .App-logo {
+  width: 20%;
   height: 40vmin;
   pointer-events: none;
 }
@@ -75,6 +81,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  max-width: 800px;
 }
 
 .App-link {

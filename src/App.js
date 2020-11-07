@@ -36,6 +36,7 @@ function App2(){
   return(
     <header className="App-header">
     <img src={logo} className="App-logo" alt="logo" />
+    <img src={logo} className="App-logo" alt="logo" />
     <p>
       Edit <code>src/App.js</code> and save to reload.
       IG Kim
@@ -323,7 +324,7 @@ function App6() {
 }
 
 
-// 🦄 07 Component : 많은 div들을 한 단어로 줄이고 싶은 충동이 들 때
+// 🦄 07 Component : 많은 html들을 한 단어로 줄일때
 
 // (1) function App() {},  function Modal(){} 모두 Component
 
@@ -340,7 +341,7 @@ function App6() {
 function App7() {
   return (
    <div className="App">
-    <p className="black-nav">07 Component : </p>
+    <p className="black-nav">🦄07 Component : 많은 html들을 한 단어로 줄일때 </p>
 
     // (1) (2)
     <Modal></Modal>
@@ -658,11 +659,11 @@ function App11() {
 // (0) (1-2)
 let[clicked제목,clicked제목변경]=  useState(0);
 // (1-3)
-let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
+let [글제목state, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   return (
    <div className="App">
-    <p className="black-nav">11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </p>
+    <p className="black-nav">🦄11 (UI 제작 패턴) props를 응용한 상세페이지 만들기 </p>
 
     // (1) (1-4)
       <button onClick={ ()=>{ clicked제목변경(0) } }>button1</button>
@@ -670,11 +671,11 @@ let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
       <button onClick={ ()=>{ clicked제목변경(2) } }>button3</button>
 
     // (1-3)
-      <Modal11 props글제목={글제목} propsclicked제목={ clicked제목 } ></Modal11>
+      <Modal11 props글제목={글제목state} propsclicked제목={ clicked제목 } ></Modal11>
     
     //(2) (2)-1.2.3.4  map() 
     {
-      글제목.map( (a,i) => {
+      글제목state.map( (a,i) => {
         return(
           <div >
           <button onClick={ ()=>{ clicked제목변경(i) }}> {a}  </button>
@@ -694,12 +695,12 @@ function Modal11(props){
   )
 }
 
-//🦄 12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법
+//🦄12 input, onInput, onChange, e.target, value (input 다루기1: 사용자가 입력한 글을 변수에 저장하는 법)
 // Q: input입력한 값 
 // (1) 2가지 방법 사용 가능  <input/> , <input></input>
 
 // (2)사용자가 input에 입력한 value를 state에 저장함
-// ""초기값..빈칸으로 설정
+// "" : default..빈칸으로 설정
 
 // (2-2)  onInput / onChange :
 //  input에 무언가 입력할 때마다 특정 함수를 동작시키고 싶을 때 사용합니다.( 입력이 될때 , 안의 함수가 실행됨.)
@@ -715,7 +716,7 @@ function Modal11(props){
 // e.target.value (input 에 입력한 값)에 따라서 ,입력값변경state가 변경됨
 
 // (2-5)
-// 변경된 입력값 출력
+// 변경된 입력값state 출력
 
 // (3)
 // warning 과 error는 다름. warining떠도 실행에는 문제가 없음
@@ -727,30 +728,30 @@ function App12() {
   let [글제목, 글제목변경] = useState(["남자", "강남", "파이썬"]);
 
   // (2)
-  let[입력값,입력값변경]=useState('');
+  let[입력값state,입력값state변경]=useState('');
       
     return (
      <div className="App">
-      <p className="black-nav">12 input 다루기 1 : 사용자가 입력한 글을 변수에 저장하는 법 </p>
+      <p className="black-nav">🦄12 input, onInput, onChange, e.target, value (input 다루기1: 사용자가 입력한 글을 변수에 저장하는 법) </p>
   
       // (1) (2-2)
-      <input type="text" onChange={ ()=>{ console.log('안녕') } }/>
+      <input type="text" onInput={ ()=>{ console.log('안녕') } }/>
 
       // (2-3)
-      <input type="text" onInput={ (e)=>{ console.log(e.target.value ) } }/>
+      <input type="text" onChange={ (e)=>{ console.log(e.target.value ) } }/>
       
       // (2-4)
-      <input type="text" onInput={ (e)=>{ 입력값변경(e.target.value ) } }/>
+      <input type="text" onInput={ (e)=>{ 입력값state변경(e.target.value ) } }/>
      
-      // (2-5)변경된 입력값 출력 : 
-        { 입력값} 
+      // (2-5)
+      입력값state: { 입력값state} 
 
       {
-        글제목.map(function (글,i) {
+        글제목.map(function (a,i) {
           return(
             // (3)
-            <div className="list" key={i}>
-            <button onClick={ ()=>{ clicked제목변경(i) } } >{글}  </button>
+            <div  key={i}>
+            <button onClick={ ()=>{ clicked제목변경(i) } } >{a}  </button>
             </div>
           ) })
        }
@@ -758,70 +759,74 @@ function App12() {
     );
   }
   
-//🦄 13 input 다루기 2 : 블로그 글발행 기능 만들기
-// Q: 글 적고 저장버튼을 click 때 글이 하나 추가되게 하기
+//🦄13 spread operator, unshift (input 다루기 2 : 블로그 글발행 기능 만들기)
+// Q: input라인에 글 적고, 저장버튼을 click 때, 그 글이 추가되게 하기
 
-// (1) onInput : 입력한 글... 입력값state에 저장
-// (1-2) onClick : 저장버튼 click, 입력값state에를, 글제목state.array에추가
-// 여기에 코딩하거나,  function으로 따로 코딩 후 호출 (단순코딩..끝)
+// (1)
+// 1. 일단 사용자가 input에 뭔가 입력하면 입력한 값을 변수나 state로 저장부터 할 것입니다.
+// 입력값state를 하나 만들어뒀고,
 
-// (2)unshift : array 맨앞에 data추가하는 문법
-// 글제목state array에 '입력값state'추가
-// 글제목변경state에 글제목state 추가
-// but state(글제목state)를 그대로 쓰는것은 나쁜습관  - (실행안됨)
+// 2 input에 뭔가 입력할 때마다 state로 저장되도록 기능개발을 했습니다. 
+// 그럼 이제 input에 값을 입력할 때마다 입력값이라는 state에 실시간으로 저장됩니다.
 
-// (2-2)spread operator : state는 바로 쓰면안되고, 다른변수에 담아서(복사해서) 사용해야함.
-// 글제목state 를 arrayCopy에 담아서(복사해서)
-// arrayCopy를 사용할 것  (끝)
+// (2) 버튼을 클릭하면 입력값 state를 [글제목] state에 추가할 것입니다.
+// 1. 이건 버튼에 onClick 달아서 기능개발하면 되겠죠?
+// – 글제목변경() 함수를 써서 변경해야되는데 () 여기 소괄호 안엔 뭘 집어넣어야하죠?
+// 글제목변경( [ 입력값state, ~~ ,~~ ,~~ ] ) 이걸 넣어주셔야합니다. 
+// 하드코딩 버전
+
+// (3) 프로그래밍 버전
+// 글제목이라는 state를 수정해서 글제목변경() 여기다가 집어넣어야하는데,
+// 수정하는 방법은 unshift()라는 array 함수를 쓰시면 됩니다.
+// unshift : array 맨앞에 data추가하는 문법
+// 근데 글제목이라는 state는 직접 수정하지 말랬죠!?
+// state(글제목state)를 그대로 쓰는것은 나쁜습관  - (실행안됨)
+
+// (3-2)spread operator : state는 바로 쓰면안되고, 다른변수에 담아서(복사해서) 사용해야함.
+// 글제목state 를 변수화해서 사용할 것 
 
   function App13 (){
+    // (1)-1
+    let[입력값state,입력값변경]=useState('');
 
-    // (1-2)
-    let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']);
-    // (1)
-    let[입력값,입력값변경]=useState('');
+    // (2)
+    let [글제목, 글제목변경] = useState(['남자코트추천', '강남우동맛집', '파이썬독학']); 
 
     return (
       <div className="App">
-      <p className="black-nav"> 13 input 다루기 2 : 블로그 글발행 기능 만들기 </p>
-      <div>
-     
-      {
-        글제목.map(function (글,i) {
-          return(
-            <div className="list" key={i}>
-            <h3>{글}</h3>           
+        <p className="black-nav"> 🦄13 spread operator, unshift (input 다루기 2 : 블로그 글발행 기능 만들기)</p>
+        <div>     
+          <div className="publish">
+            // (1)-2
+              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+              // (2)-1
+              <button onClick={ ()=>{글제목변경([입력값state,'남자코트추천', '강남우동맛집', '파이썬독학'])}}>저장</button>
           </div>
-          ) })
-       }                
 
-        <div className="publish">
-        // (1)
-          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
-          // (1-2)
-          <button onClick={ ()=>{ 글제목변경(  [입력값,'남자코트추천', '강남우동맛집', '파이썬독학'] ) }  }>저장</button>
-        </div>
-
-        <div className="publish">
-              <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>   
-          <button onClick={ ()=>{
-                 //  (2)
-            글제목.unshift(입력값);
-            글제목변경( 글제목 ) }}>저장</button>
-        </div>
-
-        <div className="publish">
-          <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+          <div className="publish">
+            <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>   
             <button onClick={ ()=>{
-            // ajax로 서버에 보내는 코딩 추가 (나중에 공부)
-                 // (2-2)
-            var arrayCopy = [...글제목]
-            arrayCopy.unshift(입력값);
-            글제목변경( arrayCopy ) }}>저장</button>
-                  </div>
-      </div>
+            
+              글제목변경( 글제목 ) }}>저장</button>
+          </div>
 
-   
+          <div className="publish">
+            <input  onInput={ (e)=>{(입력값변경(e.target.value))}  }/>
+              <button onClick={ ()=>{
+                // ajax로 서버에 보내는 코딩 추가 (나중에 공부)
+
+               //  (3)
+              // 글제목.unshift(입력값state);
+
+                // (3-2)
+                var arrayCopy = [...글제목]
+                arrayCopy.unshift(입력값state);
+                글제목변경( arrayCopy ) 
+              }}>저장</button>
+
+           <p>글제목state: {글제목}</p>
+          </div>
+        </div>   
       </div>
     )
   }
@@ -846,10 +851,10 @@ function App12() {
 // (3)state저장
 // 1. state저장할 땐 constructor() 안에 this.state 라는 변수에 전부 보관하셔야합니다.
 // constructor()라는 부분은 변수와 함수가 가득한 class 덩어리를 만들 때.. 새로운 변수를 넣는 공간입니다.
-// super()는 “extends 했던 React.Component 라는 덩어리에 있던 변수들을 그대로 물려받아 쓰겠습니다~” 라는 뜻이고 꼭 먼저 써주셔야 super() 밑에서 state를 만들 수 있습니다.
 
-// (3-2) this.state.state명
-// // 2. 그리고 꺼내쓸 때는 this.state.state명 이렇게 쓰시면 됩니다.
+// 2.super()는 “extends 했던 React.Component 라는 덩어리에 있던 변수들을 그대로 물려받아 쓰겠습니다~” 라는 뜻이고 꼭 먼저 써주셔야 super() 밑에서 state를 만들 수 있습니다.
+
+// 3. 그리고 꺼내쓸 때는 this.state.state명 이렇게 쓰시면 됩니다.
 
 // (4) state변경 .  setState
 // 버튼을 누를 때 이름을 ‘Park’으로 변경하는 기능을 만들어봅시다.
@@ -893,7 +898,7 @@ function App12() {
 // (1) (2)
   class Profile extends React.Component{
     constructor(){
-      // (3)
+      // (3)-2
       super();
       this.state ={ name: 'Kim', age : 30}
     }
@@ -911,7 +916,7 @@ function App12() {
     render(){
       return( <div>
         <h3>프로필입니다.</h3>
-        // (3-2)
+        // (3)-3
         <p>저는 {this.state.name}입니다.</p>
         // (4)
         <button onClick={ ()=>{ this.setState({name:'park'})  } }>state변경</button>
