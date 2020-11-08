@@ -309,7 +309,7 @@ function App6() {
   }
   return (
     <div className="App">
-    <p className="black-nav">🦄06 spread operator : deep copy : 공유없이 독립적인 복사 (블로그 글 수정버튼 만들기)</p>
+    <p className="black-nav">🦄06 spread operator: deep copy: 공유없이 독립적인 복사(블로그 글 수정버튼 만들기)</p>
          // (1)           
         <button onClick={제목바꾸기}>제목바꾸기</button>   
          // (3)
@@ -367,7 +367,7 @@ function Modal(){
   )
 }
 
-//🦄 08 클릭하면 동작하는 UI (모달창) 만드는 법. react에서 if문법: Conditional rendering
+//🦄 08 클릭하면 동작하는 UI(모달창) 만드는 법. react에서 if문법: Conditional rendering
 // → 37강 참고
 
 // (0) Q: 클릭하면 등장하는 간단한 UI는 어떻게 만드는지 알아봅시다. 
