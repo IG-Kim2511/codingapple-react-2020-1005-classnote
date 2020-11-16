@@ -10,6 +10,112 @@ import React, { Profiler, useState } from "react";
 
 
 //🦄
+//🦄00● npm + import / export 명령어 모음
+
+// ***********************
+// <● npm + import 명령어 모음> 
+// ***********************
+// 2
+// npx create-react-app 작명folder
+// npm start
+
+// 15  (bootstrap) npm run start
+// npm install react-bootstrap bootstrap
+
+// import { Navbar , Nav ,l, Button } from 'react-bootstrap';
+
+
+// 19 (router)
+// npm install react-router-dom
+
+
+// 22 npm install styled-components
+
+// import styled from 'styled-components'
+
+
+// 23  npm install node-sass
+
+
+// 26 npm install axios  
+
+//   import axios from 'axios';
+
+// 29 npm run build 
+
+
+// 31 npm install react-transition-group
+
+//  import {CSSTransition} from 'react-transition-group';
+
+
+// 32 npm install redux react-redux  
+
+// import {Provider} from 'react-redux';
+
+
+// ●설치 중 오류 생긴때
+// npm cache clean --force
+// npm cache verify
+
+// ●npm error “npm ERR! code ELIFECYCLE”
+// (1)
+// npm cache clean --force
+// npm install
+
+// (2)
+// npm cache clean --force
+// delete node_modules folder
+// delete package-lock.json file
+// npm install
+
+
+// ***********************
+// <● import / export 명령어 모음> 
+// ***********************
+
+// 3 import logo from "./logo.svg";
+
+// 4 import React, { useState } from "react";
+
+// 15, 16 import { Navbar , Nav ,l, Button } from 'react-bootstrap';
+
+
+// 17-1.
+// export default
+
+// export default 작명 (variable, array, function)
+
+// import 작명 from './data4.js'
+
+// 17-2.
+// export {naming, naming2}
+
+// import {naming,naming2} from './data3.js'
+
+
+// 21. 
+// import {useParams } from 'react-router-dom';
+
+// 30.
+// import React, {useState, useContext} from 'react';
+
+
+// 32 import {connect} from 'react-redux';
+
+// export default connect(함수이름)(Cart);
+
+// import { createStore} from 'redux';
+
+
+// 34  import {combineReducers, createStore} from 'redux';
+
+// 38  import {lazy, Suspense } from 'redux';
+
+// 39 import React, {useEffect, memo} from 'react';
+
+
+//🦄
 //🦄 01 소개 ( 코딩애플강사가 말하는 UI는 html을 의미함. 알고있을 것) 
 
 //🦄
