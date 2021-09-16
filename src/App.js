@@ -9,110 +9,119 @@ import logo from "./logo.svg";
 import React, { Profiler, useState } from "react";
 
 
-//🦄
+//🦄 
 //🦄00● npm + import / export 명령어 모음
 
-// ***********************
-// <● npm + import 명령어 모음> 
-// ***********************
-// 2
-// npx create-react-app 작명folder
-// npm start
+{/*  */}
 
-// 15  (bootstrap) npm run start
-// npm install react-bootstrap bootstrap
+{/*  
 
-// import { Navbar , Nav ,l, Button } from 'react-bootstrap';
+***********************
+<● npm + import 명령어 모음> 
+***********************
+2
+npx create-react-app 작명folder  : 작명folder에 설치
 
+npx create-react-app ./  : 현재폴더에 설치
 
-// 19 (router)
-// npm install react-router-dom
+npm start
 
+15  (bootstrap) npm run start
+npm install react-bootstrap bootstrap
 
-// 22 npm install styled-components
-
-// import styled from 'styled-components'
+import { Navbar , Nav ,l, Button } from 'react-bootstrap';
 
 
-// 23  npm install node-sass
+19 (router)
+npm install react-router-dom
 
 
-// 26 npm install axios  
+22 npm install styled-components
 
-//   import axios from 'axios';
-
-// 29 npm run build 
+import styled from 'styled-components'
 
 
-// 31 npm install react-transition-group
-
-//  import {CSSTransition} from 'react-transition-group';
+23  npm install node-sass
 
 
-// 32 npm install redux react-redux  
+26 npm install axios  
 
-// import {Provider} from 'react-redux';
+  import axios from 'axios';
 
-
-// ●설치 중 오류 생긴때
-// npm cache clean --force
-// npm cache verify
-
-// ●npm error “npm ERR! code ELIFECYCLE”
-// (1)
-// npm cache clean --force
-// npm install
-
-// (2)
-// npm cache clean --force
-// delete node_modules folder
-// delete package-lock.json file
-// npm install
+29 npm run build 
 
 
-// ***********************
-// <● import / export 명령어 모음> 
-// ***********************
+31 npm install react-transition-group
 
-// 3 import logo from "./logo.svg";
-
-// 4 import React, { useState } from "react";
-
-// 15, 16 import { Navbar , Nav ,l, Button } from 'react-bootstrap';
+ import {CSSTransition} from 'react-transition-group';
 
 
-// 17-1.
-// export default
+32 npm install redux react-redux  
 
-// export default 작명 (variable, array, function)
-
-// import 작명 from './data4.js'
-
-// 17-2.
-// export {naming, naming2}
-
-// import {naming,naming2} from './data3.js'
+import {Provider} from 'react-redux';
 
 
-// 21. 
-// import {useParams } from 'react-router-dom';
+●설치 중 오류 생긴때
+npm cache clean --force
+npm cache verify
 
-// 30.
-// import React, {useState, useContext} from 'react';
+●npm error “npm ERR! code ELIFECYCLE”
+(1)
+npm cache clean --force
+npm install
+
+(2)
+npm cache clean --force
+delete node_modules folder
+delete package-lock.json file
+npm install
 
 
-// 32 import {connect} from 'react-redux';
+***********************
+<● import / export 명령어 모음> 
+***********************
 
-// export default connect(함수이름)(Cart);
+3 import logo from "./logo.svg";
 
-// import { createStore} from 'redux';
+4 import React, { useState } from "react";
+
+15, 16 import { Navbar , Nav ,l, Button } from 'react-bootstrap';
 
 
-// 34  import {combineReducers, createStore} from 'redux';
+17-1.
+export default
 
-// 38  import {lazy, Suspense } from 'redux';
+export default 작명 (variable, array, function)
 
-// 39 import React, {useEffect, memo} from 'react';
+import 작명 from './data4.js'
+
+17-2.
+export {naming, naming2}
+
+import {naming,naming2} from './data3.js'
+
+
+21. 
+import {useParams } from 'react-router-dom';
+
+30.
+import React, {useState, useContext} from 'react';
+
+
+32 import {connect} from 'react-redux';
+
+export default connect(함수이름)(Cart);
+
+import { createStore} from 'redux';
+
+
+34  import {combineReducers, createStore} from 'redux';
+
+38  import {lazy, Suspense } from 'redux';
+
+39 import React, {useEffect, memo} from 'react';
+
+*/}
 
 
 //🦄
@@ -202,7 +211,7 @@ function App3(){
   <div className="App">
       <p className="black-nav"> 03 JSX </p>  
 
-      // (1)
+      // (1) 
       <h4>{posts} </h4>;
       // (2)
       <h4>(함수())</h4>
@@ -542,65 +551,66 @@ function Modal2(){
 //🦄 09 .map( ): 많은 HTML들을 반복문으로 만들 때
 // for, for in , for of
 
-// 리액트환경에선 for 반복문을 이용해 HTML을 줄일 수도 있습니다. 
+/* 
+리액트환경에선 for 반복문을 이용해 HTML을 줄일 수도 있습니다. 
 
-// (1) .map( )
-// 이름.map(콜백함수);
-// a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
-// [4,6,8]이 return됨
-// 보통 변수에 담아서 사용
-// console.log([뉴어레이]);  확인해보면 -> [ 4.6.8] 출력됨 
+(1) .map( )
+이름.map(콜백함수);
+a: array의 하나하나 모든 data를 a(parameter)에 각각 대입함
+[4,6,8]이 return됨
+보통 변수에 담아서 사용
+console.log([뉴어레이]);  확인해보면 -> [ 4.6.8] 출력됨 
 
-// array 안의 모든 자료에 똑같은 작업을 하나씩 시켜주고 싶을 때가 가끔 있습니다. 
-// 그럴 때 쓰는 문법이 바로 map 이라는 내장 함수입니다. 
-// 위처럼 모든 array에 붙일 수 있으며 소괄호 안에 콜백함수 하나 넣는게 기본입니다.
-// 그러면 map 안의 코드가 어레이 자료의 갯수만큼 실행됩니다. 
-// 3번 실행되겠네요. 
+array 안의 모든 자료에 똑같은 작업을 하나씩 시켜주고 싶을 때가 가끔 있습니다. 
+그럴 때 쓰는 문법이 바로 map 이라는 내장 함수입니다. 
+위처럼 모든 array에 붙일 수 있으며 소괄호 안에 콜백함수 하나 넣는게 기본입니다.
+그러면 map 안의 코드가 어레이 자료의 갯수만큼 실행됩니다. 
+3번 실행되겠네요. 
 
-// 어레이안의 자료에 전부 10을 곱해주고 싶으면 이렇게 작성합니다. 
-// 콜백함수 소괄호 안에 파라미터를 아무이름이나 입력해주시면 (저는 a로 입력)
-// 이 a라는 파라미터는 어레이 안에 있던 모든 자료를 하나씩 출력해주는 역할입니다. 
-// 그리고 a에 10을 곱하든 20을 곱하든 원하는 작업을 하나 시켜주시면 됩니다. 
-// 그럼 어레이에 있던 모든 자료가 10씩 곱해져셔 [20, 30, 40] 이 됩니다.  
+어레이안의 자료에 전부 10을 곱해주고 싶으면 이렇게 작성합니다. 
+콜백함수 소괄호 안에 파라미터를 아무이름이나 입력해주시면 (저는 a로 입력)
+이 a라는 파라미터는 어레이 안에 있던 모든 자료를 하나씩 출력해주는 역할입니다. 
+그리고 a에 10을 곱하든 20을 곱하든 원하는 작업을 하나 시켜주시면 됩니다. 
+그럼 어레이에 있던 모든 자료가 10씩 곱해져셔 [20, 30, 40] 이 됩니다.  
 
-// 근데 참고로 map 함수는 ,보통 새로운 변수에 담아서 사용합니다. 
-// 위처럼 작성하면 newArray에는 [20,30,40]이 담겨져있습니다. 
-// 원래 어레이에는 [2,3,4]가 담겨져있고요. 
+근데 참고로 map 함수는 ,보통 새로운 변수에 담아서 사용합니다. 
+위처럼 작성하면 newArray에는 [20,30,40]이 담겨져있습니다. 
+원래 어레이에는 [2,3,4]가 담겨져있고요. 
 
 
-// (2) map( ) 함수 쓰는 법 (→18강 추가...참고)
-//  { }  
-// 이름.map( ()=>{ })   : 이름에 변수, state, array[], function 들어감
-// return ( <div></div>)
-// ; 안쓰게 조심
+(2) map( ) 함수 쓰는 법 (→18강 추가...참고)
+ { }  
+이름.map( ()=>{ })   : 이름에 변수, state, array[], function 들어감
+return ( <div></div>)
+; 안쓰게 조심
 
-// (2-1)글제목state의 array갯수만큼 반복
+(2-1)글제목state의 array갯수만큼 반복
 
-// (2-2)arrow function 가능
+(2-2)arrow function 가능
 
-// (2-3) [ ]안의 array갯수만큼 가능
+(2-3) [ ]안의 array갯수만큼 가능
 
-// (3)반복할 html 추가
-// (3-2) return ( )추가
+(3)반복할 html 추가
+(3-2) return ( )추가
 
-// (4) 반복된 HTML에 각각 다른 제목을 부여하고 싶다면
-// (4-2) parameter(param작명)는 array'글제목'안에 있던 하나하나의 데이터 
+(4) 반복된 HTML에 각각 다른 제목을 부여하고 싶다면
+(4-2) parameter(param작명)는 array'글제목'안에 있던 하나하나의 데이터 
 
-// param작명 파라미터는 map이 반복될 때마다 어레이 안에 있던 하나하나의 데이터들을 의미한다고 했습니다. 
-// 그니까 param작명은 map 안의 코드가 3번 반복될 때
-// 차례로 ‘남자’ ‘강남’ 이런 데이터들이 된다는 소리입니다.
+param작명 파라미터는 map이 반복될 때마다 어레이 안에 있던 하나하나의 데이터들을 의미한다고 했습니다. 
+그니까 param작명은 map 안의 코드가 3번 반복될 때
+차례로 ‘남자’ ‘강남’ 이런 데이터들이 된다는 소리입니다.
 
-// (5) onClick적용가능? ㅇ
+(5) onClick적용가능? ㅇ
 
-// (6) for 반복문을 쓰고싶다면 ... Data binding하기
-// ( 함수만들기 귀찮으니 코딩꼰대가 아니라면 그냥 map을 쓰도록 합시다. )
+(6) for 반복문을 쓰고싶다면 ... Data binding하기
+( 함수만들기 귀찮으니 코딩꼰대가 아니라면 그냥 map을 쓰도록 합시다. )
 
-// 그냥 따로 함수를 만들어서 쓰셔야합니다.
-// 1. 따로 일반 함수를 만들고 
-// 2. 함수안에 HTML을 담을 빈 array[]를 하나 생성합니다. 
-// 3. 함수안에서 for 반복문을 이용해 array내에 HTML을 추가해줍니다.
-// 4. 완성된 array를 return 해줍니다. 
-// 5. 그리고 함수를 원하는 곳에 { 함수명() } 데이터바인딩 해주시면 됩니다. 
+그냥 따로 함수를 만들어서 쓰셔야합니다.
+1. 따로 일반 함수를 만들고 
+2. 함수안에 HTML을 담을 빈 array[]를 하나 생성합니다. 
+3. 함수안에서 for 반복문을 이용해 array내에 HTML을 추가해줍니다.
+4. 완성된 array를 return 해줍니다. 
+5. 그리고 함수를 원하는 곳에 { 함수명() } 데이터바인딩 해주시면 됩니다.  */
 
 function App9() {  
 
